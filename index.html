@@ -5,15 +5,13 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Lizzie Bentley | Artist & Printmaker</title>
   <style>
-    body { margin:0; font-family: sans-serif; line-height:1.6; color:#333; }
-    header, footer { background:#f8f8f8; padding:1rem; text-align: center;}
+    body { margin:0; font-family: sans-serif; color:#333; line-height:1.6; }
+    header, footer { background:#f8f8f8; padding:1rem; text-align:center; }
     nav a { margin:0 0.5rem; color:#333; text-decoration:none; }
-    .hero { text-align:center; padding:2rem 1rem; }
-    .hero img { max-width:100%; height:auto; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:1rem; padding:1rem; }
-    .grid-item img { width:100%; display:block; }
     .section { padding:2rem 1rem; }
-    .contact { background:#eee; padding:2rem 1rem; }
+    .hero img, .gallery img { width:100%; height:auto; display:block; }
+    .gallery { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:1rem; }
+    .contact { background:#eee; padding:2rem 1rem; text-align:center; }
     .contact a { color:#0066cc; text-decoration:none; }
   </style>
 </head>
@@ -25,56 +23,62 @@
     <a href="#about">About</a>
     <a href="#gallery">Gallery</a>
     <a href="#printmaking">Printmaking</a>
+    <a href="#news">News</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
 
-<section class="hero">
-  <h2>Artist & Printmaker – Stratford‑upon‑Avon UK</h2>
-  <img src="images/hero.jpg" alt="Lizzie Bentley painting">
+<section id="hero" class="section">
+  <img src="images/hero.jpg" alt="Lizzie Bentley self-portrait or studio shot">
 </section>
 
 <section id="about" class="section">
-  <h3>About</h3>
+  <h2>About</h2>
   <p>
-    Lizzie Bentley studied Fine Art at the Ruskin School of Drawing & Fine Art (Oxford University), with further training at Heatherley’s and the Prince’s Drawing School. She has two decades of experience in digital matte painting and concept artistry for film and TV, and now focuses on oil painting, printmaking, workshops, and bespoke design commissions.
+    Lizzie Bentley, born in Birmingham (1971), studied Fine Art at the Ruskin School (Oxford University), Heatherley’s School of Art, and The Prince's Drawing School. After twenty years in the film & TV matte‑painting industry, she now focuses on oil painting, printmaking, commissions, and teaching in Stratford-upon‑Avon and the Cotswolds  [oai_citation:0‡lizziebentley.com](https://www.lizziebentley.com/new-prints?utm_source=chatgpt.com).
   </p>
 </section>
 
 <section id="gallery" class="section">
-  <h3>Gallery</h3>
-  <div class="grid">
-    <!-- Replace filenames with the actual photo filenames -->
-    <div class="grid-item"><img src="images/painting1.jpg" alt="Painting title 1"></div>
-    <div class="grid-item"><img src="images/painting2.jpg" alt="Painting title 2"></div>
-    <div class="grid-item"><img src="images/painting3.jpg" alt="Painting title 3"></div>
-    <div class="grid-item"><img src="images/painting4.jpg" alt="Painting title 4"></div>
-    <!-- Add more images as needed -->
+  <h2>Painting Gallery</h2>
+  <div class="gallery">
+    <img src="images/painting1.jpg" alt="White peonies still life">
+    <img src="images/painting2.jpg" alt="Window view with teasels">
+    <img src="images/painting3.jpg" alt="Portrait in studio">
+    <img src="images/painting4.jpg" alt="Portrait of gentleman seated">
   </div>
 </section>
 
 <section id="printmaking" class="section">
-  <h3>Printmaking Portfolio</h3>
+  <h2>Printmaking Portfolio</h2>
   <p>
-    Lizzie also offers bespoke printmaking services for designers, trade, and private clients, in a range of techniques suitable for interior design, galleries, or commissioned work.
+    Bespoke prints for designers, trade and private clients—hand-signed, numbered on heavyweight art paper. A3 prints from £95  [oai_citation:1‡lizziebentley.com](https://www.lizziebentley.com/new-prints?utm_source=chatgpt.com).
   </p>
-  <div class="grid">
-    <div class="grid-item"><img src="images/print1.jpg" alt="Print example 1"></div>
-    <div class="grid-item"><img src="images/print2.jpg" alt="Print example 2"></div>
+  <div class="gallery">
+    <img src="images/print1.jpg" alt="Example print 1">
+    <img src="images/print2.jpg" alt="Example print 2">
   </div>
 </section>
 
+<section id="news" class="section">
+  <h2>News & Classes</h2>
+  <ul>
+    <li>Drawing workshop at Upton House (Banbury) – starting April/May 2025. Upcoming painting workshop June 10th 2025  [oai_citation:2‡lizziebentley.com](https://www.lizziebentley.com/news?utm_source=chatgpt.com).</li>
+    <li>Portrait painting Fridays; life drawing Monday evenings in Stratford – spaces still available  [oai_citation:3‡lizziebentley.com](https://www.lizziebentley.com/news?utm_source=chatgpt.com).</li>
+    <li>Recent mural and print commissions at Sherborne House, Lainston House & Ansty Hall  [oai_citation:4‡lizziebentley.com](https://www.lizziebentley.com/news?utm_source=chatgpt.com).</li>
+  </ul>
+</section>
+
 <section id="contact" class="contact">
-  <h3>Contact & Booking</h3>
-  <p>Email: <a href="mailto:lizziebentley@gmail.com">lizziebentley@gmail.com</a></p>
-  <p>Phone: <a href="tel:+447747612830">07747 612830</a></p>
+  <h2>Contact & Booking</h2>
   <p>Stratford‑upon‑Avon, UK</p>
-  <p>For bespoke commissions, printmaking, workshops or bookings.</p>
+  <p>Phone: <a href="tel:+447747612830">07747 612830</a></p>
+  <p>Email: <a href="mailto:lizziebentley@gmail.com">lizziebentley@gmail.com</a></p>
+  <p>Bespoke commissions, printing, workshops, and CV/concept art info available on request.</p>
 </section>
 
 <footer>
-  <p>&copy; Lizzie Bentley</p>
+  <p>&copy; 2025 Lizzie Bentley</p>
 </footer>
-
 </body>
 </html>
