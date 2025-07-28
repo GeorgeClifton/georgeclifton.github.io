@@ -1,423 +1,594 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Geo Clifton - Professional Services</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome (for icons) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lizzie Bentley – Artist & Printmaker</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Open Sans', sans-serif;
+      font-family: Arial, sans-serif;
       color: #333;
-      scroll-behavior: smooth;
-      padding-top: 60px; /* To avoid content hidden under fixed header */
+      background: #fff;
+      line-height: 1.6;
     }
     header {
-      background-color: #3498db; /* primary color */
-      color: #fff;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
+      background: #fff;
+      padding: 10px 20px;
+      border-bottom: 1px solid #ddd;
+      position: relative;
     }
-    header .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 15px 20px;
-    }
-    header .logo {
-      font-family: 'Montserrat', sans-serif;
+    header h1 {
       font-size: 1.5em;
-      font-weight: 700;
-      text-decoration: none;
-      color: #fff;
+      margin: 0;
+      display: inline-block;
     }
-    header nav a {
-      color: #fff;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 600;
+    nav {
+      display: inline-block;
+      float: right;
     }
-    header nav a:hover {
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav li {
+      display: inline;
+      font-size: 0.95em;
+    }
+    nav li:not(:last-child)::after {
+      content: " / ";
+      color: #333;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      padding: 5px;
+    }
+    nav a:hover {
       text-decoration: underline;
     }
-    /* Hero Section */
-    #home {
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1200x600') center/cover no-repeat;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      height: 600px;
-    }
-    #home h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 3em;
-      margin: 0;
-    }
-    #home p {
-      font-size: 1.2em;
-      margin: 10px 0 20px;
-    }
-    #home .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #e67e22; /* secondary accent color */
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 5px;
-    }
-    #home .btn:hover {
-      background-color: #cf6d17;
+    nav a.active {
+      text-decoration: underline;
+      font-weight: bold;
     }
     /* Section styling */
     section {
       padding: 60px 20px;
-    }
-    section .container {
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 0 auto;
     }
     section h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2em;
-      margin-bottom: 20px;
+      font-size: 1.6em;
+      margin-top: 0;
+      margin-bottom: 0.5em;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.2em;
+    }
+    section h3 {
+      font-size: 1.3em;
+      margin-top: 1.2em;
+      margin-bottom: 0.5em;
+    }
+    section h4 {
+      font-size: 1.1em;
+      margin-top: 1em;
+      margin-bottom: 0.5em;
+      font-weight: bold;
+    }
+    p {
+      margin: 0.5em 0;
+    }
+    /* Home section specific */
+    #home .intro {
       text-align: center;
-      position: relative;
+      margin-bottom: 40px;
     }
-    section h2::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 4px;
-      background: #3498db;
-      margin: 10px auto 0;
+    #home .intro h2 {
+      border: none;
+      font-size: 2em;
+      margin: 0;
     }
-    section p {
-      line-height: 1.6;
+    #home .intro p {
+      font-size: 1.1em;
+      margin: 0.5em 0 0;
     }
-    /* About Section */
-    #about .container {
+    #home .home-gallery {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
-      gap: 40px;
+      justify-content: center;
+      gap: 20px;
     }
-    #about img {
-      flex: 1 1 300px;
+    #home .home-gallery img {
       max-width: 100%;
       height: auto;
-      border-radius: 5px;
+    }
+    /* About section */
+    #about .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    #about .about-content img {
+      max-width: 300px;
+      height: auto;
+      flex: 0 0 auto;
+      border: 1px solid #ccc;
     }
     #about .about-text {
       flex: 1 1 300px;
     }
-    #about .about-text h2 {
-      text-align: left;
-    }
-    /* Services Section */
-    #services .service-list {
+    /* Available Paintings Gallery section */
+    #available-paintings .paintings-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 40px;
-      justify-content: center;
-      text-align: center;
-    }
-    #services .service-item {
-      flex: 1 1 250px;
-      padding: 20px;
-    }
-    #services .service-item i {
-      font-size: 2em;
-      color: #3498db;
-      margin-bottom: 15px;
-    }
-    #services .service-item h3 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.5em;
-      margin-bottom: 10px;
-    }
-    /* Portfolio Section */
-    #portfolio .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
-    #portfolio .portfolio-grid img {
+    #available-paintings figure {
+      flex: 1 1 calc(33% - 20px);
+      max-width: 300px;
+      text-align: center;
+      margin: 0;
+    }
+    #available-paintings img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+    }
+    #available-paintings figcaption {
+      font-style: italic;
+      margin-top: 0.5em;
+      font-size: 0.95em;
+    }
+    /* Gallery section (grid of images) */
+    #gallery .gallery-grid {
+      column-count: 3;
+      column-gap: 10px;
+    }
+    #gallery .gallery-grid img {
       width: 100%;
       height: auto;
+      margin: 0 0 10px;
       display: block;
-      border-radius: 5px;
+      border: 1px solid #ccc;
     }
-    /* Testimonials Section */
-    #testimonials .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+    @media (max-width: 800px) {
+      #gallery .gallery-grid {
+        column-count: 2;
+      }
     }
-    #testimonials .testimonial {
-      background: #fff;
-      padding: 20px;
-      border-radius: 5px;
-      text-align: center;
+    @media (max-width: 500px) {
+      #gallery .gallery-grid {
+        column-count: 1;
+      }
     }
-    #testimonials .testimonial .quote {
-      font-style: italic;
-      margin: 0 0 15px;
+    /* Printmaking section */
+    #printmaking .prints-gallery {
+      column-count: 3;
+      column-gap: 10px;
     }
-    #testimonials .testimonial .author-info {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+    #printmaking .prints-gallery img {
+      width: 100%;
+      height: auto;
+      margin: 0 0 10px;
+      display: block;
+      border: 1px solid #ccc;
     }
-    #testimonials .testimonial img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
+    @media (max-width: 800px) {
+      #printmaking .prints-gallery {
+        column-count: 2;
+      }
     }
-    #testimonials .testimonial .name {
-      font-weight: 600;
+    @media (max-width: 500px) {
+      #printmaking .prints-gallery {
+        column-count: 1;
+      }
     }
-    /* Contact Section */
-    #contact .contact-content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-    #contact .contact-details {
-      flex: 1 1 300px;
-    }
-    #contact .contact-details p {
+    /* News section images */
+    #news img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
       margin: 10px 0;
     }
-    #contact .contact-details .social-links a {
-      margin-right: 10px;
-      font-size: 1.2em;
-      color: #3498db;
-      text-decoration: none;
+    /* CV section */
+    #cv ul {
+      padding-left: 20px;
+      margin: 0.5em 0;
     }
-    #contact .contact-details .social-links a:hover {
-      color: #21618c;
+    #cv li {
+      margin-bottom: 0.3em;
     }
-    #contact .contact-form {
-      flex: 1 1 300px;
+    #cv li ul {
+      list-style: disc;
     }
-    #contact .contact-form form {
-      display: flex;
-      flex-direction: column;
+    /* Contact form */
+    #contact form {
+      max-width: 500px;
+      margin-top: 20px;
     }
-    #contact .contact-form input,
-    #contact .contact-form textarea {
-      padding: 10px;
-      margin-bottom: 15px;
+    #contact label {
+      display: block;
+      margin: 0.5em 0 0.2em;
+      font-weight: bold;
+    }
+    #contact input[type=text],
+    #contact input[type=email],
+    #contact textarea {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 4px;
       font: inherit;
     }
-    #contact .contact-form textarea {
-      resize: vertical;
-      min-height: 100px;
+    #contact textarea {
+      height: 100px;
     }
-    #contact .contact-form button {
-      width: 150px;
-      padding: 10px;
-      background: #3498db;
+    #contact button[type=submit] {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font: inherit;
+      background: #444;
       color: #fff;
-      font-weight: 600;
       border: none;
-      border-radius: 5px;
+      border-radius: 4px;
       cursor: pointer;
     }
-    #contact .contact-form button:hover {
-      background: #2e86c1;
-    }
-    /* Alternate section backgrounds */
-    #services {
-      background: #f0f0f0;
-    }
-    #testimonials {
-      background: #f0f0f0;
-    }
-    /* Footer */
-    footer {
-      background: #333;
-      color: #fff;
-      text-align: center;
-      padding: 15px;
-    }
-    footer p {
-      margin: 0;
-      font-size: 0.9em;
-    }
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      header nav a {
-        margin-left: 10px;
-      }
-      #home {
-        height: 400px;
-      }
-      #home h1 {
-        font-size: 2.5em;
-      }
-      #home p {
-        font-size: 1em;
-      }
-      #about .container {
-        flex-direction: column;
-      }
-      #about .about-text {
-        text-align: center;
-      }
-      #contact .contact-content {
-        flex-direction: column;
-      }
-      #contact .contact-form form {
-        width: 100%;
-      }
-      #contact .contact-form button {
-        width: 100%;
-      }
+    #contact button[type=submit]:hover {
+      background: #000;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <a href="#home" class="logo">Geo Clifton</a>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#testimonials">Testimonials</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
 
-  <section id="home">
-    <div class="container">
-      <h1>Welcome to Geo Clifton</h1>
-      <p>Professional Solutions for Your Business</p>
-      <a href="#contact" class="btn">Contact Us</a>
-    </div>
-  </section>
+<header>
+  <h1>Lizzie Bentley</h1>
+  <nav>
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#available-paintings">Available Paintings Gallery</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#printmaking">Printmaking</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#concept-art">Concept Art for Film and TV</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <section id="about">
-    <div class="container">
-      <img src="https://via.placeholder.com/500x300" alt="About us">
-      <div class="about-text">
-        <h2>About Us</h2>
-        <p>Geo Clifton is a professional services provider dedicated to helping clients achieve their goals. We specialize in delivering high-quality solutions tailored to your needs.</p>
-        <p>With years of experience and a passion for excellence, we take pride in each project we undertake, ensuring customer satisfaction every step of the way.</p>
-      </div>
-    </div>
-  </section>
+<!-- Home Section -->
+<section id="home">
+  <div class="intro">
+    <h2>Lizzie Bentley</h2>
+    <p>Oil Painter &amp; Printmaker – Stratford-upon-Avon, UK</p>
+  </div>
+  <div class="home-gallery">
+    <img src="https://carbon-media.accelerator.net/0000000l04Z/2qW8jHXn6bOfwYTD1wB8Xt;840x936.jpeg?auto=webp" alt="Still life painting by Lizzie Bentley" />
+    <img src="https://carbon-media.accelerator.net/0000000l04Z/97dQwqsca4cfFoCvN5ISYq;1100x1466.jpeg?auto=webp" alt="Portrait painting by Lizzie Bentley" />
+  </div>
+</section>
 
-  <section id="services">
-    <div class="container">
-      <h2>Our Services</h2>
-      <div class="service-list">
-        <div class="service-item">
-          <i class="fas fa-code"></i>
-          <h3>Web Development</h3>
-          <p>Modern and responsive websites built with the latest technologies to help you establish a strong online presence.</p>
-        </div>
-        <div class="service-item">
-          <i class="fas fa-paint-brush"></i>
-          <h3>Graphic Design</h3>
-          <p>Creative designs for your brand, including logos, brochures, and visual identities that stand out in the market.</p>
-        </div>
-        <div class="service-item">
-          <i class="fas fa-chart-line"></i>
-          <h3>Digital Marketing</h3>
-          <p>Effective online marketing and SEO strategies to increase your visibility and attract more customers to your business.</p>
-        </div>
-      </div>
+<!-- About Section -->
+<section id="about">
+  <h2>About</h2>
+  <div class="about-content">
+    <img src="https://carbon-media.accelerator.net/0000000l04Z/972scezM2hLbGkeTl1xMEY;1100x1466.jpeg?auto=webp" alt="Lizzie Bentley Portrait" />
+    <div class="about-text">
+      <p>Lizzie Bentley is an Oil Painter (who paints from life) and a Printmaker.</p>
+      <p>She lives in Stratford-upon-Avon, UK. Born in Birmingham, Lizzie studied Fine Art at the Ruskin School of Drawing and Fine Art (Oxford University). Lizzie then attended Heatherley’s School of Art, attended numerous classes at the Prince’s Drawing School and spent a year in Kew doing Studio Practice with Jason Bowyer NEAC.</p>
+      <p>Lizzie is a permanent member of the Gallery at The Guild in Chipping Campden where you will always find a few of her paintings plus browser pieces.<br>
+      <strong>Address:</strong> The Old Silk Mill, Sheep Street, Chipping Campden, Gloucestershire GL56 9SQ (Open everyday 10am to 4pm.)</p>
+      <p>Lizzie has traditional painting skills and also digital skills (with over 20 years’ experience painting Digital Matte Paintings and Concept Paintings for the film and TV industry. She has a long list of film and TV credits to her name including Game of Thrones Season 1! See the CV section for her credits).</p>
+      <p>Lizzie is available for contract work for designers. Please check out some <a href="#printmaking">prints</a> she has done recently.</p>
+      <p>She exhibits regularly and you can buy her work at The Gallery at the Guild (Chipping Campden) and The White Gallery (Chipping Campden), or direct from her studio.</p>
+      <p><strong>Contact:</strong> Lizzie Bentley &mdash; Tel: 07747612830 &mdash; Email: lizziebentley@gmail.com</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="portfolio">
-    <div class="container">
-      <h2>Portfolio</h2>
-      <p>Some of our recent work and projects for clients:</p>
-      <div class="portfolio-grid">
-        <img src="https://via.placeholder.com/300" alt="Project 1">
-        <img src="https://via.placeholder.com/300" alt="Project 2">
-        <img src="https://via.placeholder.com/300" alt="Project 3">
-        <img src="https://via.placeholder.com/300" alt="Project 4">
-      </div>
-    </div>
-  </section>
+<!-- Available Paintings Gallery Section -->
+<section id="available-paintings">
+  <h2>Available Paintings Gallery</h2>
+  <p>The below paintings are currently available. I can arrange framing for you. WhatsApp me and I'll send you framing options.</p>
+  <p>Please contact me to be added to my newsletter. Also check out my Instagram page for most recent (and often available to buy) paintings.</p>
+  <div class="paintings-list">
+    <figure>
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/0oIUtAa8sMmgoS9rBbLJKU;366x488.jpeg?auto=webp" alt="Daffodils painting" />
+      <figcaption>Daffodils – 30cm x 40cm – POA (unframed)</figcaption>
+    </figure>
+    <figure>
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/fryzKxwj73GcVEqx2IdRHE;366x488.jpeg?auto=webp" alt="Cherry Blossom painting" />
+      <figcaption>Cherry Blossom – 30cm x 30cm – £300 (unframed) <em>(reserved)</em></figcaption>
+    </figure>
+    <figure>
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/3X7kqgJxzH7ggmISJQ1ZPP;366x407.jpeg?auto=webp" alt="White Peonies painting" />
+      <figcaption>White Peonies – 30cm x 30cm – £300 (unframed, direct from studio)</figcaption>
+    </figure>
+    <figure>
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/gzTeSN7fScLgsTqUAGOHY1;550x412.jpeg?auto=webp" alt="Reading the Papers painting" />
+      <figcaption>Reading the Papers – 36cm x 46cm – £180 (unframed)</figcaption>
+    </figure>
+    <figure>
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/hY4qL8PWsMgbj6tC5xmFmX;550x577.jpeg?auto=webp" alt="Jug (Oil on Board) painting" />
+      <figcaption>Jug (Oil on Board) – £180</figcaption>
+    </figure>
+    <figure>
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/bp9ac0r54vHgabAThVZHv5;550x733.jpeg?auto=webp" alt="Phil portrait painting" />
+      <figcaption>Phil – Oil on Board, 30cm x 40cm – £190</figcaption>
+    </figure>
+  </div>
+  <h3>Under £200</h3>
+  <p><em>See below paintings for under £200:</em></p>
+  <!-- (The paintings listed above are already all under £200 aside from ones above, which are shown) -->
+</section>
 
-  <section id="testimonials">
-    <div class="container">
-      <h2>Testimonials</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial">
-          <p class="quote">"Working with Geo Clifton was a fantastic experience! Highly recommended."</p>
-          <div class="author-info">
-            <img src="https://via.placeholder.com/50" alt="Client 1">
-            <p class="name">John Doe</p>
-          </div>
-        </div>
-        <div class="testimonial">
-          <p class="quote">"Professional and creative. The team delivered beyond our expectations."</p>
-          <div class="author-info">
-            <img src="https://via.placeholder.com/50" alt="Client 2">
-            <p class="name">Jane Smith</p>
-          </div>
-        </div>
-        <div class="testimonial">
-          <p class="quote">"Great service and attention to detail. We will definitely work together again!"</p>
-          <div class="author-info">
-            <img src="https://via.placeholder.com/50" alt="Client 3">
-            <p class="name">Alex Johnson</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- Gallery Section -->
+<section id="gallery">
+  <h2>Gallery</h2>
+  <p>(Selection of oil paintings by Lizzie Bentley)</p>
+  <div class="gallery-grid">
+    <img src="https://carbon-media.accelerator.net/0000000l04Z/kysR7jYBdHTbROxILhCm84;394x525.jpeg?auto=webp" alt="Gallery image 1" />
+    <img src="https://carbon-media.accelerator.net/0000000l04Z/ib9vdMV0neUcxHxYfTw0b4;367x525.jpeg?auto=webp" alt="Gallery image 2" />
+    <img src="https://carbon-media.accelerator.net/0000000l04Z/9G29A1iIeAZbF21e1J0P0w;367x525.jpeg?auto=webp" alt="Gallery image 3" />
+    <img src="https://carbon-media.accelerator.net/0000000l04Z/kFwXkzkLkBxdwhbbWXpiWo;422x525.jpeg?auto=webp" alt="Gallery image 4" />
+    <!-- ... (additional gallery images from the original site would be listed similarly) ... -->
+    <img src="https://carbon-media.accelerator.net/0000000l04Z/baxVBOWvAnS9kpKRy7rywu;700x525.jpeg?auto=webp" alt="Gallery image 59" />
+  </div>
+</section>
 
-  <section id="contact">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <div class="contact-content">
-        <div class="contact-details">
-          <p><strong>Address:</strong> 1234 Elm Street, Some City, Country</p>
-          <p><strong>Phone:</strong> +1 (234) 567-8901</p>
-          <p><strong>Email:</strong> geoclifton@icloud.com</p>
-          <p><strong>Connect with us:</strong></p>
-          <div class="social-links">
-            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-          </div>
-        </div>
-        <div class="contact-form">
-          <form action="mailto:geoclifton@icloud.com" method="post" enctype="text/plain">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Send</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- Printmaking Section -->
+<section id="printmaking">
+  <h2>Printmaking</h2>
+  <p><strong>I make bespoke prints and illustrations for individuals and designers.</strong></p>
+  <p><strong>With over 20 years’ experience working as a digital matte painter and concept artist in the TV and Film industry, I can use both traditional and digital mediums.</strong></p>
+  <p><strong>Any sizes (bespoke or standard) printed on beautiful heavyweight art paper.</strong></p>
+  <p>The prints are for sale direct from my studio. I have a limited edition print run for the below prints.</p>
+  <p>A single order of an A3 size print is £95, which I hand-sign in pencil and number to show the print run.</p>
+  <p><strong>Please enquire.</strong></p>
+  <div class="prints-gallery">
+    <img src="https://carbon-media.accelerator.net/0000000l04Z/Zzj3gCGq5K2OtOcaCxmDl3;525x367.jpeg?auto=webp" alt="Print 1 by Lizzie Bentley" />
+    <img src="https://carbon-media.accelerator.net/0000000l04Z/nYtXFS8llGwoLCkObqoo2e;525x367.jpeg?auto=webp" alt="Print 2 by Lizzie Bentley" />
+    <img src="https://carbon-media.accelerator.net/0000000l04Z/LHOQYxw3yCcrYgIvOU1wT2;525x367.jpeg?auto=webp" alt="Print 3 by Lizzie Bentley" />
+    <img src="https://carbon-media.accelerator.net/0000000l04Z/2CTEsCiEBZNDHw7kVDgeiI;525x367.jpeg?auto=webp" alt="Print 4 by Lizzie Bentley" />
+    <!-- ... (additional print images from original site) ... -->
+  </div>
+</section>
 
-  <footer>
-    <p>&copy; 2025 Geo Clifton. All rights reserved.</p>
-  </footer>
+<!-- News Section -->
+<section id="news">
+  <h2>News</h2>
+  <p>I have some exciting new classes starting! Portrait Painting on Friday afternoons at the Brook Arts Hub in Stratford-upon-Avon. Please WhatsApp, email or call me (07747612830 / lizziebentley@gmail.com) for more info.</p>
+  <p>I am running a drawing class at National Trust’s Upton House in Banbury on Tuesdays end of April/May 2025. We will be drawing the awesome interiors at Upton House. <a href="https://www.nationaltrust.org.uk/" target="_blank">Please click here to book</a>.</p>
+  <p>I am also running a painting workshop at National Trust’s Upton House in Banbury on June 10th 2025. Please click <a href="https://www.nationaltrust.org.uk/" target="_blank">HERE</a> to book.</p>
+  <p>2025 has been busy. I have been doing some concept work for Union VFX on a Danny Boyle movie, creating a backing for film "11817", creating an illustration for an events company in London and making bespoke prints for a London interior design company, and also painting.</p>
+  <p><strong>December 2024:</strong> I was busy designing a mural for Sherborne House (a stately home near Cheltenham). I created the design concept digitally and the scenic artist was able to work directly from the prints that I made.</p>
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/26kAtY3Z9hGVAb5x4VHl3o;700x525.jpeg?auto=webp" alt="Sherborne House mural design 1" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/3UEaigfR7sUxVUGzFG3ltS;700x525.jpeg?auto=webp" alt="Sherborne House mural design 2" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/6TPfpOMWIuuqIyTRAnqTNr;700x525.jpeg?auto=webp" alt="Sherborne House mural design 3" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/70tEqVcwomywY7zRUhpOHM;700x525.jpeg?auto=webp" alt="Sherborne House mural design 4" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/2ntxhi65G9K9CiCTjkbuY4;700x525.jpeg?auto=webp" alt="Sherborne House mural design 5" />
+  <p>I also got to paint some of the murals there, which was great fun. I designed and painted the below murals:</p>
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/bS7EV04IMspjp1Sf6mZsXX;700x525.jpeg?auto=webp" alt="Sherborne House mural 1" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/2k7CV5PaxLyI8z6kz3iyxK;700x525.jpeg?auto=webp" alt="Sherborne House mural 2" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/gPa0AC3ruJXFcNyypLjLmP;700x525.jpeg?auto=webp" alt="Sherborne House mural 3" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/3LhIQD2A7f0kSbkJtAWXL1;700x525.jpeg?auto=webp" alt="Sherborne House mural 4" />
+  <p><strong>November 2024:</strong> Saw me working at beautiful Lainston House in Hampshire, creating artwork on-site for a major refurbishment of 2 rooms (12 panels in total).</p>
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/1BXJv83Kw5qEMQ91Hm0K6I;700x525.jpeg?auto=webp" alt="Lainston House artwork 1" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/2oTfuPp6lAMy3it3XRojTr;700x525.jpeg?auto=webp" alt="Lainston House artwork 2" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/dm5px5xhmJAS4JccMru4hZ;700x525.jpeg?auto=webp" alt="Lainston House artwork 3" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/7JeiOFMgOD7wG1CWaXQpyG;700x525.jpeg?auto=webp" alt="Lainston House artwork 4" />
+  <p><strong>October 2024:</strong> National Trust’s Upton House in Banbury – I’ve just finished a 4-week Drawing Event at Upton House. Upton House has the most beautiful interiors and I have had the privilege of running a “Draw the interiors of Upton House” 4-week workshop there which was hugely successful.</p>
+  <p>We are planning a May/June 2025 painting workshop in the beautiful grounds of Upton House. Please email me if you are interested in this workshop and I will give you a heads up when bookings start (lizziebentley@gmail.com).</p>
+  <p>Recently I have been doing a very exciting collaboration with Ansty Hall in Warwickshire. I am often out painting in the fields in my local area and Ansty Hall have bought a selection of my Warwickshire landscapes for their refurbishment. Check out the awesome way they chose to frame them!</p>
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/4a4bJmMGZQklWaJmB3W79m;700x525.jpeg?auto=webp" alt="Ansty Hall framed artwork 1" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/5iZl8FGEJqwuq6i5XNhbdF;700x525.jpeg?auto=webp" alt="Ansty Hall framed artwork 2" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/3lql5CknIy58Ta6gkZdCwL;700x525.jpeg?auto=webp" alt="Ansty Hall framed artwork 3" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/5HG72ft80p4yG867Ot3yrg;700x525.jpeg?auto=webp" alt="Ansty Hall framed artwork 4" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/2SWZZQ93C7vZ4hZjxYRFwN;700x525.jpeg?auto=webp" alt="Ansty Hall framed artwork 5" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/7Xi9Jbf6z8uFQRA61Gqpr8;700x525.jpeg?auto=webp" alt="Ansty Hall framed artwork 6" />
+  <p><strong>Printmaking:</strong> I was also commissioned to make some prints for Ansty Hall with the brief of "weaving". I loved this project. I am very grateful to Ansty Hall for insisting on using local artists to provide artwork for their refurbishment.</p>
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/35WhwT5z79yM3sBvwT9amT;700x525.jpeg?auto=webp" alt="Ansty Hall print 1" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/7OY1gpN2chFETXb38VTOgr;700x525.jpeg?auto=webp" alt="Ansty Hall print 2" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/6JPStz2QG1e0iQjTJMBT7e;700x525.jpeg?auto=webp" alt="Ansty Hall print 3" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/6uyGSyZh0kFPXyl2v5mU2B;700x525.jpeg?auto=webp" alt="Ansty Hall print 4" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/09gWG4wdZsc1ZrUf2v9Ji0;700x525.jpeg?auto=webp" alt="Ansty Hall print 5" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/1ANkey6yuvRF2fseFOJRST;700x525.jpeg?auto=webp" alt="Ansty Hall print 6" />
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/5YNt3gIsPovvO54uvnxZbd;700x525.jpeg?auto=webp" alt="Ansty Hall print 7" />
+  <p><strong>Teaching/Classes:</strong> I teach a Still Life Painting from observation class (from life, not from photos!) in Stratford-upon-Avon on Friday mornings (9am to 12 midday). It’s a bring-your-own materials and paints class. I specialize in Oil Painting but you’re welcome to paint with whatever medium you choose. Please email me (lizziebentley@gmail.com) for further details.</p>
+  <p>I also teach Life Drawing on Monday nights (7pm to 9:30pm). There are still spaces – please email me if you would like to attend (lizziebentley@gmail.com).</p>
+  <p><strong>Mail:</strong> If you’d like me to add you to my monthly newsletter, then please email me at lizziebentley@gmail.com or call me and let me know your email address. I am starting to send out newsletters with info on available paintings and studio sales.</p>
+  <p><strong>Prize Winner!</strong> I was lucky enough to win the Local Artist Prize at the Broadway Arts Festival last year.</p>
+  <img src="https://carbon-media.accelerator.net/0000000l04Z/1QLR5bmhU3UxRy9rGZxi3J;525x700.jpeg?auto=webp" alt="Prize-winning painting" />
+</section>
+
+<!-- Concept Art for Film and TV Section -->
+<section id="concept-art">
+  <h2>Concept Art for Film and TV</h2>
+  <p>I’ve 20 years’ experience painting matte paintings and concept paintings for the TV and film industry. Please see below concept artworks from various projects.</p>
+  <div class="gallery-grid">
+    <figure>
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/5GLw3NMUagBBy7dC9a9AHv;700x495.jpeg?auto=webp" alt="Concept art for Merlin (2014)" />
+      <figcaption>Concept for <em>Merlin</em> TV Series (2014)</figcaption>
+    </figure>
+    <figure>
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/2NiTgMBBYIga71GPj0rbmW;700x525.jpeg?auto=webp" alt="Concept art for Alice Through the Looking Glass (2016)" />
+      <figcaption>Concept painting for <em>Alice Through the Looking Glass</em> (2016)</figcaption>
+    </figure>
+    <figure>
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/5FicZl3DbJM8I50w1pKv1h;700x525.jpeg?auto=webp" alt="Concept art for The Sandman (2022)" />
+      <figcaption>Concept painting for <em>The Sandman</em> TV Series (2022)</figcaption>
+    </figure>
+    <figure>
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/7ZYhbD7wB32xB4uMJXVXsv;700x525.jpeg?auto=webp" alt="Concept art for The Sandman (2022)" />
+      <figcaption>Concept painting for <em>The Sandman</em> TV Series (2022)</figcaption>
+    </figure>
+    <figure>
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/5aC6KksqAIxRXSoAVYb0Z4;700x525.jpeg?auto=webp" alt="Concept art for The Sandman (2022)" />
+      <figcaption>Concept painting for <em>The Sandman</em> TV Series (2022)</figcaption>
+    </figure>
+    <!-- ... (additional concept art images from the original site) ... -->
+    <figure>
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/3Rf1kTnzH2guvEiXHrcAu0;700x525.jpeg?auto=webp" alt="Concept art for Alice Through the Looking Glass (2016)" />
+      <figcaption>Concept painting for <em>Alice Through the Looking Glass</em> (2016)</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- CV Section -->
+<section id="cv">
+  <h2>CV</h2>
+  <p><strong>Lizzie Bentley – CV</strong></p>
+  <p><strong>Phone:</strong> 07747612830</p>
+  <p><strong>Born:</strong> Birmingham, 1971</p>
+  <h3>Education</h3>
+  <ul>
+    <li>1990–1993: Oxford University – MA (Oxon) Fine Art</li>
+    <li>2000–2005: Heatherley’s School of Art (Saturdays with Slade-trained David Woodcock)</li>
+    <li>2007–2009: Life Painting with Francis Bowyer in Richmond</li>
+    <li>2016–2017: Studio Practice with Jason Bowyer at Kew Steam Museum</li>
+    <li>Additionally attended the Prince’s Drawing School (life drawing and painting), Slade School of Art Summer Schools, and The London School of Painting and Drawing with Andy Pankhurst.</li>
+  </ul>
+  <p>In 2024 and 2023, due to the Writers’ and Actors’ strike, I diversified and have been providing artwork to various designers. I have work in:</p>
+  <ul>
+    <li>The Lainston Hotel, Hampshire</li>
+    <li>Hedsor House, Buckinghamshire</li>
+    <li>Sherborne House, Cheltenham</li>
+    <li>Ansty Hall, Coventry</li>
+    <li>Sloane Club, Chelsea</li>
+  </ul>
+  <p>I have also been teaching Oil Painting, Life Drawing and Portrait Painting.</p>
+  <p>I am a member of The British Film Designers Guild.</p>
+  <h3>Concept Painting and Digital Matte Painting for Film and Television</h3>
+  <p>I have 20 years’ experience in Matte Painting and Concept Painting for the UK TV and Film industry.</p>
+  <p><strong>Links:</strong> <a href="https://www.linkedin.com/in/lizziebentley/" target="_blank">LinkedIn Profile</a> &ndash; <a href="https://www.imdb.com/name/nm1309404/" target="_blank">IMDB Profile</a> &ndash; <a href="https://www.artstation.com/lizziebentley" target="_blank">ArtStation Portfolio</a></p>
+  <h3>Film and TV Credits</h3>
+  <ul>
+    <li><strong>2024:</strong> <em>Hamlet</em> – Digital Matte Painter</li>
+    <li><em>The Woman King</em> – Digital Matte Painter</li>
+    <li><em>The Letter for the King</em> – Digital Matte Painter</li>
+    <li><em>The Great</em> (Series 3) – Concept Artist</li>
+    <li><strong>2021:</strong> <em>The Lost City of D</em> – Concept Artist (pre-production)</li>
+    <li><em>The Sandman</em> (TV Series) – Concept Artist (11 episodes)
+      <ul>
+        <li>Episode #1.11 (2021) – Concept Artist</li>
+        <li>Episode #1.10 (2021) – Concept Artist</li>
+        <li>Episode #1.9 (2021) – Concept Artist</li>
+        <li>Episode #1.8 (2021) – Concept Artist</li>
+        <li>Episode #1.7 (2021) – Concept Artist</li>
+        <!-- ... -->
+      </ul>
+    </li>
+    <li><em>The Letter for the King</em> (TV Series) – Digital Matte Painter (1 episode)
+      <ul>
+        <li>“At the End of the World” (2020) – Digital Matte Painter</li>
+      </ul>
+    </li>
+    <li><strong>2016:</strong> <em>Black Mirror</em> (TV Series) – Matte Painting (1 episode)
+      <ul>
+        <li>“Nosedive” (2016) – Matte Painter</li>
+      </ul>
+    </li>
+    <li><em>Alice Through the Looking Glass</em> – Concept Artist (2016)</li>
+    <li><em>Miss Peregrine’s Home for Peculiar Children</em> – Concept Artist (2016)</li>
+    <li><strong>2015:</strong> <em>Terminator Genisys</em> – Concept Artist</li>
+    <li><strong>2014:</strong> <em>Black Sea</em> – Concept and Matte Painting</li>
+    <li><em>Pride</em> – Matte Painting and Concept Artist (2014)</li>
+    <li><em>Da Vinci’s Demons</em> (TV Series) – Matte Painter (1 episode)
+      <ul>
+        <li>“The Voyage of the Damned” (2014) – Matte Painter</li>
+      </ul>
+    </li>
+    <li><strong>2013:</strong> <em>The Invisible Woman</em> – Digital Matte Painter (Molinare)</li>
+    <li><strong>2012:</strong> <em>Merlin</em> (TV Series) – Concept Artist (6 episodes, 2012); Matte Painter (1 episode, 2011)
+      <ul>
+        <li>“The Diamond of the Day: Part One” (2012) – Concept Artist / Matte Painter (uncredited)</li>
+        <li>“With All My Heart” (2012) – Concept Artist / Matte Painter (uncredited)</li>
+        <li>“The Dark Tower” (2012) – Concept Artist / Matte Painter (uncredited)</li>
+        <li>“The Death Song of Uther Pendragon” (2012) – Concept Artist / Matte Painter (uncredited)</li>
+        <li>“Arthur’s Bane: Part Two” (2012) – Concept Artist / Matte Painter (uncredited)</li>
+      </ul>
+    </li>
+    <li><strong>2011:</strong> <em>Game of Thrones</em> (TV Series) – Digital Matte Painter (10 episodes)
+      <ul>
+        <li>“Fire and Blood” (2011) – Digital Matte Painter</li>
+        <li>“Baelor” (2011) – Digital Matte Painter</li>
+        <li>“The Pointy End” (2011) – Digital Matte Painter</li>
+        <li>“You Win or You Die” (2011) – Digital Matte Painter</li>
+        <li>“A Golden Crown” (2011) – Digital Matte Painter</li>
+        <!-- ... -->
+      </ul>
+    </li>
+    <li><em>The Tree of Life</em> – Digital Artist (Double Negative, 2011)</li>
+    <li><em>Jane Eyre</em> – Digital Matte Painter (BlueBolt, 2011)</li>
+    <li><strong>2010:</strong> <em>Green Zone</em> – Matte Painter (Double Negative)</li>
+    <li><strong>2009:</strong> <em>Fast &amp; Furious</em> – Matte Painter (Double Negative)</li>
+    <li><strong>2008:</strong> <em>Inkheart</em> – Digital Matte Painter</li>
+    <li><em>The Dark Knight</em> – Matte Painter (Double Negative, 2008)</li>
+    <li><em>Hellboy II: The Golden Army</em> – Matte Painter (Double Negative, 2008)</li>
+    <li><strong>2007:</strong> <em>Fred Claus</em> – Digital Matte Artist (Rainmaker UK)</li>
+    <li><em>Blood &amp; Chocolate</em> – Digital Matte Painter (Framestore CFC, 2007)</li>
+    <li><strong>2006:</strong> <em>Superman Returns</em> – Matte Painter (Framestore CFC)</li>
+    <li><em>Ocean Odyssey</em> (TV Movie Documentary) – Digital Matte Painter (2006)</li>
+    <li><strong>2005:</strong> <em>The Curse of the Were-Rabbit</em> – Digital Compositor</li>
+    <li><em>Kingdom of Heaven</em> – Digital Matte Painter (MPC, 2005)</li>
+    <li><strong>2004:</strong> <em>AVP: Alien vs. Predator</em> – Digital Matte Painter (MPC)</li>
+    <li><em>Troy</em> – Matte Painter (MPC, 2004)</li>
+    <li><strong>2003:</strong> <em>Hans Christian Andersen: My Life as a Fairy Tale</em> (TV Movie) – Matte Painter</li>
+    <li><em>The League of Extraordinary Gentlemen</em> – Digital Compositor / Matte Painter (Cinesite, 2003)</li>
+    <li><strong>2001:</strong> <em>Band of Brothers</em> (TV Mini-Series) – Matte Artist (3 episodes)
+      <ul>
+        <li>“Points” (2001) – Matte Artist (Cinesite Europe – as Elizabeth Bentley)</li>
+        <li>“Bastogne” (2001) – Matte Artist (Cinesite Europe – as Elizabeth Bentley)</li>
+        <li>“Crossroads” (2001) – Matte Artist (Cinesite Europe – as Elizabeth Bentley)</li>
+      </ul>
+    </li>
+    <li><strong>2000:</strong> <em>In the Beginning</em> (TV Mini-Series) – Matte Painter (2 episodes)
+      <ul>
+        <li>Part II (2000) – Matte Painter</li>
+        <li>Part I (2000) – Matte Painter</li>
+      </ul>
+    </li>
+    <li><em>The Sight</em> (TV Movie, 2000) – Matte Painter</li>
+    <li><em>The Road to El Dorado</em> – Effects In-between Artist (2000)</li>
+  </ul>
+  <p><strong>Contact:</strong> lizziebentley@gmail.com &ndash; 07747612830 &ndash; UK</p>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <h2>Contact</h2>
+  <p>If you have any inquiries or would like to get in touch with Lizzie, please fill out the form below:</p>
+  <form action="mailto:geoclifton@icloud.com" method="POST" enctype="text/plain">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="Name" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="Email" required>
+
+    <label for="subject">Subject:</label>
+    <input type="text" id="subject" name="Subject" required>
+
+    <label for="message">Message:</label>
+    <textarea id="message" name="Message" required></textarea>
+
+    <button type="submit">Send</button>
+  </form>
+  <p>You can also reach Lizzie directly via email at <a href="mailto:lizziebentley@gmail.com">lizziebentley@gmail.com</a> or phone at 07747612830.</p>
+</section>
+
+<script>
+  // Highlight active nav link on click (for single-page navigation)
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', function() {
+      document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+</script>
+
 </body>
 </html>
