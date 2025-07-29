@@ -3,112 +3,301 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lizzie Bentley</title>
+  <title>Lizzie Bentley – Artist Portfolio</title>
+  <!-- Font and icon libraries -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pO8XkXJo1O1XQn7IR+XK1J7jS4FdJ6y+q1V+8VKzlgXj5e01v0H+8vxmFu4FKTt/Hy7ZHW6j9N8+Jr9p6aj2dg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
-    /* Basic reset and styling */
-    html, body { margin: 0; padding: 0; }
-    body { font-family: Arial, sans-serif; }
-
-    /* Top navigation bar */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #000;
       background: #fff;
-      padding: 10px 20px;
-      position: fixed; /* Keep nav fixed at top */
+      scroll-behavior: smooth;
+    }
+    /* Sticky navigation bar */
+    nav {
+      position: fixed;
       top: 0;
-      left: 0;
       width: 100%;
+      background: #000;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
       z-index: 1000;
     }
     nav .brand {
-      font-size: 1.5em;
+      font-size: 1.2em;
       font-weight: bold;
-      text-decoration: none;
-      color: #000;
     }
-    nav .nav-links {
+    nav .nav-toggle {
+      display: none;
+      font-size: 1.5em;
+      cursor: pointer;
+    }
+    nav .nav-menu {
       list-style: none;
       margin: 0;
       padding: 0;
       display: flex;
+      gap: 20px;
     }
-    nav .nav-links li {
-      margin-left: 20px;
+    nav .nav-menu li {
+      display: inline;
     }
-    nav .nav-links li a {
+    nav .nav-menu a {
+      color: #fff;
       text-decoration: none;
-      color: #000;
-      font-weight: 500;
+      font-weight: bold;
+      padding: 8px;
     }
-
-    /* Hamburger menu (hidden by default on large screens) */
-    .hamburger {
-      display: none;
-      font-size: 1.5em;
+    nav .nav-menu a:hover {
+      text-decoration: underline;
+    }
+    /* Sections */
+    section {
+      padding: 80px 20px 60px 20px; /* add top padding so content isn't hidden under nav */
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    section h2 {
+      font-size: 1.8em;
+      margin-top: 0;
+      border-bottom: 2px solid #000;
+      display: inline-block;
+      padding-bottom: 5px;
+      margin-bottom: 20px;
+    }
+    section p {
+      line-height: 1.6;
+    }
+    /* Specific sections styling */
+    #home {
+      text-align: center;
+    }
+    #home h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    #home .home-images {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    #home .home-images img {
+      max-width: 45%;
+      height: auto;
       cursor: pointer;
-      user-select: none;
     }
-
-    /* Responsive styles for smaller screens */
+    /* Gallery grid (for Gallery and Printmaking sections) */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+    .image-grid img {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+    }
+    /* Available paintings list */
+    .painting-list {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .painting-item {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .painting-item img {
+      max-width: 100%;
+      height: auto;
+      cursor: pointer;
+    }
+    .painting-item figcaption {
+      font-style: italic;
+      margin-top: 5px;
+    }
+    /* News section subheadings */
+    #news h3 {
+      font-size: 1.3em;
+      margin-top: 40px;
+      margin-bottom: 10px;
+      color: #000;
+    }
+    #news h4 {
+      font-size: 1.1em;
+      margin-top: 30px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    /* CV section styling */
+    #cv h3 {
+      font-size: 1.3em;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #000;
+    }
+    #cv p, #cv ul {
+      line-height: 1.5;
+    }
+    #cv ul {
+      padding-left: 20px;
+    }
+    #cv ul li {
+      margin-bottom: 5px;
+    }
+    /* Contact form */
+    #contact form {
+      max-width: 500px;
+      margin: 20px auto;
+      text-align: left;
+    }
+    #contact label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+    #contact input, #contact textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: Arial, sans-serif;
+      font-size: 1em;
+    }
+    #contact textarea {
+      resize: vertical;
+      height: 120px;
+    }
+    #contact button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 1em;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #contact button:hover {
+      background: #333;
+    }
+    /* Lightbox (modal image viewer) */
+    #lightbox-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+    #lightbox-overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      box-shadow: 0 0 10px #000;
+    }
+    /* Footer */
+    footer {
+      background: #000;
+      color: #fff;
+      padding: 20px;
+    }
+    footer .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    footer .footer-nav {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    footer .footer-nav li {
+      display: inline;
+    }
+    footer .footer-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9em;
+    }
+    footer .footer-nav a:hover {
+      text-decoration: underline;
+    }
+    footer .social-icons a {
+      color: #fff;
+      font-size: 1.2em;
+      margin-right: 15px;
+      text-decoration: none;
+    }
+    footer .social-icons a:hover {
+      color: #ddd;
+    }
+    footer .contact-info {
+      font-size: 0.9em;
+      margin: 10px 0;
+    }
+    /* Responsive behavior */
     @media (max-width: 768px) {
-      nav {
-        /* Stack brand and hamburger horizontally, hide links until opened */
-        padding: 10px 15px;
-      }
-      nav .nav-links {
-        display: none; /* hide nav links on mobile by default */
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: #fff;
-        text-align: center;
+      nav .nav-menu {
+        display: none;
         flex-direction: column;
-        border-top: 1px solid #ccc;
+        background: #000;
+        position: absolute;
+        top: 50px; /* below the nav bar */
+        right: 20px;
+        padding: 10px;
+        border: 1px solid #333;
       }
-      nav .nav-links li {
-        margin: 0;
-        padding: 10px 0;
-      }
-      .hamburger {
+      nav .nav-menu.open {
         display: block;
       }
-    }
-
-    /* Show nav links when hamburger menu is toggled open */
-    nav.nav-open .nav-links {
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Scroll snapping */
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      scroll-snap-type: y mandatory;
-      scroll-snap-stop: always;
-      /* If header is fixed, add padding so sections don't hide under nav */
-      scroll-padding-top: 80px;
-    }
-    section {
-      scroll-snap-align: start;
-      padding: 100px 20px 60px 20px; /* include top padding to offset fixed nav */
+      nav .nav-menu li {
+        display: block;
+        margin: 5px 0;
+      }
+      nav .nav-toggle {
+        display: block;
+        color: #fff;
+      }
+      #home .home-images {
+        flex-direction: column;
+      }
+      #home .home-images img {
+        max-width: 80%;
+        margin-bottom: 10px;
+      }
+      footer .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      footer .footer-nav {
+        justify-content: center;
+        margin-bottom: 10px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation -->
+  <!-- Navigation Bar -->
   <nav>
-    <a href="#home" class="brand">Lizzie Bentley – Stratford-upon-Avon, UK</a>
-    <div class="hamburger" onclick="toggleNav()">☰</div>
-    <ul class="nav-links">
+    <div class="brand">Lizzie Bentley</div>
+    <div class="nav-toggle"><i class="fas fa-bars"></i></div>
+    <ul class="nav-menu">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#available">Available Paintings Gallery</a></li>
+      <li><a href="#available-paintings-gallery">Available Paintings Gallery</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#printmaking">Printmaking</a></li>
       <li><a href="#news">News</a></li>
@@ -120,93 +309,561 @@
 
   <!-- Home Section -->
   <section id="home">
-    <!-- (Preserve existing home content such as images or intro text; only scroll snapping is added) -->
-    <!-- Example content: -->
+    <h1>Lizzie Bentley – Stratford-upon-Avon, UK</h1>
     <div class="home-images">
-      <img src="image1.jpg" alt="Painting of white flowers" style="max-width:45%; margin: 2%;" />
-      <img src="image2.jpg" alt="Painting of a seated person" style="max-width:45%; margin: 2%;" />
+      <!-- Home page images -->
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/2qW8jHXn6bOfwYTD1wB8Xt;840x936.jpeg?auto=webp" alt="Oil painting of white flowers in a vase" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/97dQwqsca4cfFoCvN5ISYq;1100x1466.jpeg?auto=webp" alt="Oil painting of an elderly man seated in a chair" />
     </div>
   </section>
 
   <!-- About Section -->
   <section id="about">
     <h2>About</h2>
-    <p>Lizzie Bentley is an oil painter (working from life) and a printmaker based in Stratford-upon-Avon, UK.</p>
-    <p>Born in Birmingham, she studied Fine Art at the Ruskin School of Art (Oxford University). She continued her training at Heatherley’s School of Art and at the Prince’s Drawing School, and spent a year of studio practice in Kew with Jason Bowyer.</p>
-    <p>She combines traditional painting skills with over 20 years of digital art experience in the film and TV industry. Lizzie exhibits regularly and is a member of The Gallery at the Guild in Chipping Campden, where some of her paintings are permanently on display.</p>
-    <p>In addition to painting, Lizzie has an extensive career as a digital matte painter and concept artist for film and TV, with credits including <em>Game of Thrones</em> (Season 1) among many others (see the CV section below for a full list of credits). She is available for contract work and also offers art classes. Lizzie’s work can be purchased through local galleries or directly from her studio.</p>
-    <p><strong>Contact:</strong> Tel: 07747 612839 | Email: <a href="mailto:lizziebentley@gmail.com">lizziebentley@gmail.com</a></p>
+    <p><strong>Lizzie Bentley</strong> is an oil painter (working from life) and a printmaker based in Stratford-upon-Avon, UK [oai_citation:14‡lizziebentley.com](http://lizziebentley.com/about-1#:~:text=Lizzie%20Bentley%20is%20an%20Oil,and%20a%20Printmaker). Born in Birmingham, she studied Fine Art at the Ruskin School of Art (Oxford University) and continued her training at Heatherley’s School of Art, the Prince’s Drawing School, and a year of studio practice in Kew with Jason Bowyer [oai_citation:15‡lizziebentley.com](http://lizziebentley.com/about-1#:~:text=Born%20in%20Birmingham%2C%20Lizzie%20studied,Practice%20with%20Jason%20Bowyer%20NEAC). She combines traditional painting skills with over 20 years of digital art experience in the film and TV industry. Lizzie exhibits regularly and is a member of The Gallery at the Guild in Chipping Campden, where some of her paintings are permanently on display [oai_citation:16‡lizziebentley.com](http://lizziebentley.com/about-1#:~:text=Lizzie%20is%20a%20permanent%20member,her%20paintings%20plus%20browser%20pieces).</p>
+    <p>In addition to painting, Lizzie has an extensive career as a digital matte painter and concept artist for film/TV, with credits including *Game of Thrones* (Season 1) among many others [oai_citation:17‡lizziebentley.com](http://lizziebentley.com/about-1#:~:text=Lizzie%20has%20traditional%20painting%20skills,CV%20tab%20for%20her%20credits). (See the CV section below for a full list of credits.) She is available for contract work and also offers art classes. Lizzie’s work can be purchased through local galleries or directly from her studio [oai_citation:18‡lizziebentley.com](http://lizziebentley.com/about-1#:~:text=Lizzie%20is%20available%20for%20contract,prints%20I%20have%20done%20recently).</p>
+    <p><em>Contact:</em> Tel: 07747 612830 &nbsp;|&nbsp; Email: <a href="mailto:lizziebentley@gmail.com">lizziebentley@gmail.com</a></p>
+    <figure class="about-image" style="text-align:center; margin-top:30px;">
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/972scezM2hLbGkeTl1xMEY;1100x1466.jpeg?auto=webp" alt="Lizzie Bentley portrait" style="max-width:300px; width:100%; height:auto;" />
+      <figcaption style="font-style:italic; color:#555;">Lizzie Bentley</figcaption>
+    </figure>
   </section>
 
   <!-- Available Paintings Gallery Section -->
-  <section id="available">
+  <section id="available-paintings-gallery">
     <h2>Available Paintings Gallery</h2>
-    <!-- Preserve existing gallery content (e.g., thumbnails of available paintings) -->
-    <div class="gallery-grid">
-      <!-- ... existing images/thumbnails ... -->
+    <p>This gallery shows paintings that are currently available for purchase. Framing can be arranged on request [oai_citation:19‡lizziebentley.com](http://lizziebentley.com/past-work#:~:text=The%20below%20paintings%20are%20currently,can%20arrange%20framing%20for%20you). Feel free to contact Lizzie to join her newsletter for updates on new works, and check out her Instagram for the most recent pieces. [oai_citation:20‡lizziebentley.com](http://lizziebentley.com/past-work#:~:text=Whatsapp%20me%20and%20I%27ll%20send,you%20framing%20options)</p>
+    <div class="painting-list">
+      <!-- Painting 1 -->
+      <figure class="painting-item">
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/0oIUtAa8sMmgoS9rBbLJKU;366x488.jpeg?auto=webp" alt="Daffodils painting" />
+        <figcaption><strong>Daffodils</strong> – 30cm x 40cm – POA (Unframed)</figcaption>
+      </figure>
+      <!-- Painting 2 -->
+      <figure class="painting-item">
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/fryzKxwj73GcVEqx2IdRHE;366x488.jpeg?auto=webp" alt="Cherry Blossom painting" />
+        <figcaption><strong>Cherry Blossom</strong> – 30cm x 30cm – £300 (Unframed, <em>reserved</em>)</figcaption>
+      </figure>
+      <!-- Painting 3 -->
+      <figure class="painting-item">
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/3X7kqgJxzH7ggmISJQ1ZPP;366x407.jpeg?auto=webp" alt="White Peonies painting" />
+        <figcaption><strong>White Peonies</strong> – 30cm x 30cm – £300 (Unframed, direct from studio)</figcaption>
+      </figure>
+      <h3 style="text-align:center; margin-top:50px;">Under £200</h3>
+      <p style="text-align:center; font-style:italic; margin-bottom:30px;">The following available paintings are priced under £200:</p>
+      <!-- Painting 4 -->
+      <figure class="painting-item">
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/gzTeSN7fScLgsTqUAGOHY1;550x412.jpeg?auto=webp" alt="Reading the Papers painting" />
+        <figcaption><strong>Reading the Papers</strong> – 36cm x 46cm – £180 (Unframed)</figcaption>
+      </figure>
+      <!-- Painting 5 -->
+      <figure class="painting-item">
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/hY4qL8PWsMgbj6tC5xmFmX;550x577.jpeg?auto=webp" alt="Jug (Oil on Board) painting" />
+        <figcaption><strong>Jug</strong> (Oil on Board) – £180</figcaption>
+      </figure>
+      <!-- Painting 6 -->
+      <figure class="painting-item">
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/bp9ac0r54vHgabAThVZHv5;550x733.jpeg?auto=webp" alt="Phil (Oil on Board) painting" />
+        <figcaption><strong>Phil</strong> (Oil on Board) – 30cm x 40cm – £190</figcaption>
+      </figure>
     </div>
   </section>
 
   <!-- Gallery Section -->
   <section id="gallery">
     <h2>Gallery</h2>
-    <!-- Preserve existing gallery content -->
-    <div class="gallery-grid">
-      <!-- ... existing images ... -->
+    <p>This section showcases a selection of Lizzie Bentley’s oil paintings (past works). Click any image to view a larger version.</p>
+    <div class="image-grid">
+      <!-- All gallery images -->
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/kysR7jYBdHTbROxILhCm84;394x525.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/ib9vdMV0neUcxHxYfTw0b4;367x525.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/4aDJIfkvJtuhVXKO8cjUPw;525x356.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/a5OUt63G1UI19z0oG6jef4;525x438.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/3p6lpc4TzhQj5vTgkcSZ3u;525x374.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/7Gyum84120dg53idKgVIwa;525x366.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/1jnbETnaMxT7bA4EGdCgmE;525x434.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/6BHZ19TCUUVACcSjWMqw8m;525x434.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/fGndcBGqgv26fpUDVXHKv2;525x371.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/bLNEA0foR2mD7uB61NiyBU;525x366.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/3o4FSB43Zze4xq3ZpHNwqo;525x369.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/2HRsSl1sIfxXVy2oSVWAIJ;525x361.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/3owG98iPyUvdkSo7dvUtis;525x436.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/7AHhRGllFTPr9ezacSoSed;525x443.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/5MMMjL0IHY7xotXbPSH5si;525x369.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/dkI9c87c9hGKr38yPIVT3E;525x366.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/6O6CJrDnN9L6rUShHXJrnI;525x439.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/e9Xp5f3LIdm2r8fO6fd81g;525x398.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/dC9sYEyVGS8XYEE9y5jZHQ;525x367.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/7NbnjfUZAfkgH2SsC3dchB;525x367.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/bCtcyl5VMCXahXsgIEqCtN;525x403.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/8sZrdB6YDTa3OQodNhPQZJ;525x384.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/73H58Ivh49ezIO3cwylf7W;525x353.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/aFXCozHcZ48YZTwpNUdM5f;525x359.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/53rPzBDjnIg2YpI6d9sJYk;525x366.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/5stCboIdm1GhtmL1C336Gp;525x366.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/eZlAUfjZ58kshfsSNZijhc;525x353.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/4nalz4RctnEneA7mo9JJF7;525x438.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/8aWbW0zTn1k3rPypNzSev3;525x354.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/48LNZ1w9Z7O5dfMVhbltBC;525x362.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/5sLQLk0ShVKUEr7pyhCuna;525x367.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/cJ9kk1gbS6I9eUfyM42zv3;525x350.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/1JzxR5xbtwtAbn4jEczKEP;525x418.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/67Jk9shks3cAO5VSjMNVyO;525x361.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/5u9toZDr7rncCXDGLBb96U;525x419.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/4cjGg8r5sJg7cA0eLkPVRz;525x368.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/7JZ45hI8X0Z9kSVpHwkraA;525x351.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/4b6ZqTRj9EH2sKEuERADd9;525x351.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/lExQgP8LmKV7HZKwhRZbP;525x340.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/7MeF9GgWbeFl69HNR5pnS1;525x358.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/ffC3rdQyWdqHMGbCSB1Ktp;525x364.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/amIhw9E60cJcc2oT94riLx;525x355.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/4cRbjtyMCllUOkFzr1YIUV;525x438.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/4aEn72O7Ih65LJkgaPIqkR;525x366.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/6Y47jF8t6xQAvy8TgUIav4;525x366.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/flR0E5nXVZDsVKPZmdvT25;525x351.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/8Hnyg7RjXAbRmqn2N439rD;525x369.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/gdiaWr3xkKMtMJaToahTuy;525x351.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/6AZaAojdGAKvslHSFqNi2Q;525x351.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/0SwAMi8z5uBkc3Xp8NKovt;525x359.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/eyWtAoGcgwTcmCIiIfuJSY;525x366.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/07qgk9xQJ6uEiA97OyC28S;525x350.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/7nmJgTKBIPEFMewQUODs7U;525x376.jpeg?auto=webp" alt="Oil painting by Lizzie Bentley" />
     </div>
   </section>
 
   <!-- Printmaking Section -->
   <section id="printmaking">
     <h2>Printmaking</h2>
-    <!-- Preserve existing printmaking content -->
-    <div class="gallery-grid">
-      <!-- ... existing images/prints ... -->
+    <p><strong>Lizzie creates bespoke prints and illustrations</strong> for individuals and designers, leveraging her 20+ years as a digital matte painter and concept artist [oai_citation:21‡lizziebentley.com](http://lizziebentley.com/new-prints#:~:text=I%20make%20bespoke%20prints%20and,illustrations%20for%20individuals%20and%20Designers). She produces prints in any size (bespoke or standard) on high-quality art paper. All prints are sold directly from her studio, often in limited editions [oai_citation:22‡lizziebentley.com](http://lizziebentley.com/new-prints#:~:text=The%20prints%20are%20for%20sale,run%20for%20the%20below%20prints). A signed A3 print is typically £95, numbered and hand-signed by Lizzie. Please inquire for custom print orders or other sizes.</p>
+    <p>Below is a gallery of some of Lizzie’s recent print artworks (limited edition prints are noted). Click any image to view it larger.</p>
+    <div class="image-grid">
+      <!-- All printmaking images -->
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/7sgyOWXOdgVdEr2wg5wzZW;525x371.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/0KZxHWmCz7oiK4FAamc512;525x366.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/j9nkVqavmaWxbYp4TB5err;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/a0GQ8O8Z9yplCYi9BcpJX7;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/3WMXrh0mZyRcvnd6GGPp9n;525x369.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/jaSHU3UZU2IVSqtTkNXFhY;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/2IpGMCQ8r8snCp0bKZLPSN;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/avUWzkrpLftgrvjo9k3t59;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/3sBmW6lqBiUjVeOmRRUB1W;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/64WEr0L2sGhoqgogMfAQ1Q;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/g41q6WinkHgyynkekHMB8E;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/nlyRAuTt5ZC7thG5xLOVO;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/1B4bH5ZXdSOqQlTX8gv1A8;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/67Zx4huI6Eo74CswTFtSIx;525x369.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/4W7H6o3I9oYUZtmM3YIIfU;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/51dVs4BJET0PvpZAs44akt;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/1u6Lsg0NzF1GHkuxxf5dpZ;525x367.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/8kvm2Cpg3rXh0AK2afXFNH;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/bUN00Mz5cQ85DJtyIf85pP;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/4kjn13OdsRtkXY0NBqmCEb;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/2TXr7BCw0oeyQ51C6MZCUh;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/eSXLIARa8HZgf5J23vjPCC;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/0K03S3FB3cvHcIYSh9dBMm;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/1M7ACFBbRiDDc0pjo0u4DS;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/ijSXTljuJu14LqRpEJ9Xf;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/2cEcxDPSwbgFUwh7YmnLrH;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/9ixkRiA8NMN6SwTcYqk7I;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/3RBdudlmB8S4buZp6PCr1E;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/6p0szC0yIffqLFjG7cTjG5;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/1f4KhKQypo02x9Oz32s05h;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/aWfOkLruOhKwByOCzSJRo5;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/5g7gEOivwHq61Oy82DMQe9;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/5E6jNbBa3lMM4PMIhK5t3z;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/7xhQO871D9HrPe9ct6xGwR;525x351.jpeg?auto=webp" alt="Print artwork by Lizzie Bentley" />
     </div>
   </section>
 
   <!-- News Section -->
   <section id="news">
     <h2>News</h2>
-    <!-- Preserve existing news/content -->
-    <div class="news-content">
-      <!-- ... existing news items ... -->
+    <p>Welcome to the news section – here Lizzie shares updates about classes, workshops, recent projects, and achievements. Below are some highlights:</p>
+    <!-- Classes and workshops -->
+    <h3>Art Classes & Workshops (2025)</h3>
+    <p><strong>New Portrait Painting Class:</strong> Starting in 2025, Lizzie is running a portrait painting class on Friday afternoons at the Brook Arts Hub in Stratford-upon-Avon [oai_citation:23‡lizziebentley.com](http://lizziebentley.com/news#:~:text=I%20have%20some%20exciting%20new,com%20for%20more%20info). Interested students can WhatsApp or email her (07747 612830, lizziebentley@gmail.com) for details. She also ran a successful 4-week drawing event at National Trust’s Upton House in Banbury (Apr–May 2025), drawing the house’s beautiful interiors [oai_citation:24‡lizziebentley.com](http://lizziebentley.com/news#:~:text=I%20am%20running%20a%20Drawing,on%20Tuesdays%20end%20April%2FMay%202025). A painting workshop in Upton House’s gardens is planned for May/June 2025 – email Lizzie to be notified when bookings open [oai_citation:25‡lizziebentley.com](http://lizziebentley.com/news#:~:text=Upton%20House%20has%20the%20most,there%20which%20was%20hugely%20successful).</p>
+    <p><strong>Workshops at Upton House:</strong> In June 2025, Lizzie is leading a painting workshop at Upton House (Banbury) [oai_citation:26‡lizziebentley.com](http://lizziebentley.com/news#:~:text=I%20am%20also%20running%20a,Banbury%20on%20June%2010th%202025). Links to book these National Trust sessions are provided in the announcements above.</p>
+    <!-- Recent Projects 2024/2025 -->
+    <h3>Recent Projects</h3>
+    <p>Lizzie has been busy with various projects. In **2025**, she undertook concept art work for Union VFX on a Danny Boyle film (working title "11817"), created an illustration for a London events company, produced bespoke prints for an interior design company, and of course continued her oil painting [oai_citation:27‡lizziebentley.com](http://lizziebentley.com/news#:~:text=2025%20has%20been%20busy,design%20company%20and%20also%20painting).</p>
+    <p>In **December 2024**, Lizzie was involved in designing a mural for Sherborne House (a stately home near Cheltenham). She developed the concept digitally and provided high-quality prints for the scenic artist to work from [oai_citation:28‡lizziebentley.com](http://lizziebentley.com/news#:~:text=In%20December%202024%20I%20was,the%20prints%20that%20I%20made). She also painted portions of the murals on-site. Below are images of the Sherborne House mural design and execution:</p>
+    <div class="image-grid">
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/aVOTU2TSwX6OaUIrEvo6MC;525x394.jpeg?auto=webp" alt="Sherborne House mural concept 1" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/2mT8vxaIjNHM1gBskSPaak;525x394.jpeg?auto=webp" alt="Sherborne House mural concept 2" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/79RT0QgPaKrlp0wMO13PJ;525x700.jpeg?auto=webp" alt="Sherborne House mural concept 3" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/cSlePfTDfAYZdAb3Wco7Ao;525x700.jpeg?auto=webp" alt="Sherborne House mural concept 4" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/6S2v052ONlTPXOJzYIJ8PJ;525x700.jpeg?auto=webp" alt="Sherborne House mural concept 5" />
     </div>
+    <p>Lizzie also enjoyed painting some of these murals on-site at Sherborne House. Below are photos of the completed murals she designed and helped paint:</p>
+    <div class="image-grid">
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/dLLHMwICUA6eoEZ7zuUDM;525x700.jpeg?auto=webp" alt="Sherborne House finished mural 1" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/eG8dJcKyptXUJc0XiOR8OH;525x700.jpeg?auto=webp" alt="Sherborne House finished mural 2" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/5kO7mTGqf7axWRSDdsrTN3;525x700.jpeg?auto=webp" alt="Sherborne House finished mural 3" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/2fIbq2bZFL30tiar0RS4j8;525x700.jpeg?auto=webp" alt="Sherborne House finished mural 4" />
+    </div>
+    <!-- Lainston House Project -->
+    <h4>November 2024 – Lainston House, Hampshire</h4>
+    <p>In November 2024, Lizzie created artwork on-site at the beautiful Lainston House hotel in Hampshire as part of a major interior refurbishment [oai_citation:29‡lizziebentley.com](http://lizziebentley.com/news#:~:text=November%202024%20Saw%20me%20working,12%20panels%20in%20total). She produced 12 large painted panels for two rooms. Some images of the Lainston House project are shown below:</p>
+    <div class="image-grid">
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/dYRoHq3GrJgoEuIvzAxoBe;525x394.jpeg?auto=webp" alt="Lainston House project panel 1" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/hLeovCpH6x0kXKslB26IJ;525x394.jpeg?auto=webp" alt="Lainston House project panel 2" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/5CwF5C8iBWK7wwa5bXqDgA;525x394.jpeg?auto=webp" alt="Lainston House project panel 3" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/dBkN3Zh4ZzgHhEPgdub5w3;525x394.jpeg?auto=webp" alt="Lainston House project panel 4" />
+    </div>
+    <!-- Upton House Drawing Event -->
+    <h4>October 2024 – Upton House Drawing Event</h4>
+    <p>In October 2024, Lizzie ran a 4-week **“Draw the interiors of Upton House”** workshop at Upton House (Banbury). It was a great success, with participants drawing the house’s stunning interior rooms [oai_citation:30‡lizziebentley.com](http://lizziebentley.com/news#:~:text=Drawing%20Event%20at%20Upton%20House,in%20Banbury). Due to its popularity, a follow-up outdoor painting workshop at Upton House is being planned for 2025 (as mentioned above).</p>
+    <!-- Ansty Hall Collaboration -->
+    <h4>2024 – Ansty Hall Collaboration</h4>
+    <p>Lizzie began an exciting collaboration with **Ansty Hall** (a hotel in Warwickshire) in late 2024. The hotel purchased a selection of her Warwickshire landscape paintings for their refurbishment, and they chose creative framing options to display them [oai_citation:31‡lizziebentley.com](http://lizziebentley.com/news#:~:text=Recently%20I%20have%20been%20doing,they%20chose%20to%20frame%20them). Below are images of some of these landscapes and their unique frames at Ansty Hall:</p>
+    <div class="image-grid">
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/8yFBbEew58EYbe0CgGtRtP;525x394.jpeg?auto=webp" alt="Ansty Hall landscape 1" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/9NT0n3mq6tTFy7yeTS17Tg;525x394.jpeg?auto=webp" alt="Ansty Hall landscape 2" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/fNwCtO2T2AxujUdURdXyh8;525x394.jpeg?auto=webp" alt="Ansty Hall landscape 3" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/1bo6YG4pKpeDbkeQ7NeHap;525x394.jpeg?auto=webp" alt="Ansty Hall landscape 4" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/1JSCTUSuxI3gaQQnf63hcs;525x394.jpeg?auto=webp" alt="Ansty Hall landscape 5" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/3AKknx7zfYcv05muRDubbx;525x394.jpeg?auto=webp" alt="Ansty Hall landscape 6" />
+    </div>
+    <p>Additionally, Ansty Hall commissioned Lizzie to create bespoke **weaving-themed prints** for their decor [oai_citation:32‡lizziebentley.com](http://lizziebentley.com/news#:~:text=I%20was%20also%20commissioned%20to,provide%20artwork%20for%20their%20refurb). She enjoyed this project and appreciates Ansty Hall’s commitment to using local artists. Below are images of the weaving-themed print series Lizzie made for Ansty Hall:</p>
+    <div class="image-grid">
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/cgPAfIPpbN1P98C49pId2Q;525x394.jpeg?auto=webp" alt="Ansty Hall weaving print 1" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/jlT9xVMFY0Ep6MqTBDcZMa;525x394.jpeg?auto=webp" alt="Ansty Hall weaving print 2" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/8IP34pPsZ15K76e4aOlBSs;525x394.jpeg?auto=webp" alt="Ansty Hall weaving print 3" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/4rDjqo3NRNVkv9uJsjwh0L;525x394.jpeg?auto=webp" alt="Ansty Hall weaving print 4" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/7UtZN66yPxul9AJFp3z4Bo;525x394.jpeg?auto=webp" alt="Ansty Hall weaving print 5" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/5O48v6cd41iFbDcR7qbbLC;525x394.jpeg?auto=webp" alt="Ansty Hall weaving print 6" />
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/4mdpV2RdfBr01s5wy0OpdO;525x394.jpeg?auto=webp" alt="Ansty Hall weaving print 7" />
+    </div>
+    <!-- Teaching and Newsletter -->
+    <h3>Teaching & Newsletter</h3>
+    <p><strong>Weekly Classes:</strong> Lizzie teaches a still-life oil painting class from observation (Friday mornings in Stratford-upon-Avon) and a life drawing class on Monday nights. These classes are ongoing, and as of early 2025 there are still spots available in the life drawing sessions [oai_citation:33‡lizziebentley.com](http://lizziebentley.com/news#:~:text=I%20teach%20a%20Still%20Life,com%20for%20further%20details). Contact her via email if interested in joining. </p>
+    <p><strong>Newsletter:</strong> Lizzie has started a monthly email newsletter featuring available paintings and studio sales. To be added to the mailing list, just email her or call with your email address [oai_citation:34‡lizziebentley.com](http://lizziebentley.com/news#:~:text=If%20you%E2%80%99d%20like%20me%20to,me%20know%20your%20email%20address). She welcomes anyone interested to subscribe for regular updates on her art.</p>
+    <!-- Award -->
+    <h3>Prize Winner!</h3>
+    <p>Lizzie was honored to win the Local Artist Prize at the Broadway Arts Festival in 2024 [oai_citation:35‡lizziebentley.com](http://lizziebentley.com/news#:~:text=Prize%20Winner%21). This recognition highlights her talent and contribution to the local art scene.</p>
+    <figure style="text-align:center; margin:20px 0;">
+      <img src="https://carbon-media.accelerator.net/0000000l04Z/6DT7i6MoArTAvwhS40H5xO;525x700.jpeg?auto=webp" alt="Lizzie Bentley receiving local artist prize" style="max-width:300px; width:100%; height:auto;" />
+      <figcaption style="font-style:italic; color:#555;">Lizzie receiving the Local Artist Prize at Broadway Arts Festival (2024)</figcaption>
+    </figure>
   </section>
 
-  <!-- Concept Art Section -->
+  <!-- Concept Art for Film and TV Section -->
   <section id="concept-art">
     <h2>Concept Art for Film and TV</h2>
-    <!-- Preserve existing concept art content -->
-    <div class="gallery-grid">
-      <!-- ... existing images ... -->
+    <p>Lizzie has over <strong>20 years of experience</strong> creating digital matte paintings and concept art for the TV and film industry [oai_citation:36‡lizziebentley.com](http://lizziebentley.com/concept-painting#:~:text=I%E2%80%99ve%2020%20years%20experience%20painting,are%20in%20the%20previous%20tab). Below is a collection of her concept art pieces for various productions. (*Note: Matte paintings are showcased in the Gallery section.*)</p>
+    <!-- Concept art images with captions -->
+    <div class="image-grid">
+      <!-- Merlin -->
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/kI9PgroFNd7bRZA1hH81dt;960x546.jpeg?auto=webp" alt="Concept art for Merlin (TV, 2014)" />
+        <figcaption>Concept for <em>Merlin</em> TV Series (2014)</figcaption>
+      </figure>
+      <!-- Alice Through the Looking Glass -->
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/d9pgnC6QO3XCkuG0lwdXL2;960x546.jpeg?auto=webp" alt="Concept art for Alice Through the Looking Glass (2016)" />
+        <figcaption>Concept Painting for “Alice Through the Looking Glass” (2016)</figcaption>
+      </figure>
+      <!-- The Sandman (multiple) -->
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/8D848wld2EqcDqa4GyzCRJ;960x540.jpeg?auto=webp" alt="Concept art for The Sandman (2022) - 1" />
+        <figcaption>Concept Painting for “The Sandman” (TV Series, 2022)</figcaption>
+      </figure>
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/7wKOX0fdrYe7QM8yWbJn3x;960x540.jpeg?auto=webp" alt="Concept art for The Sandman (2022) - 2" />
+        <figcaption>Concept Painting for “The Sandman” (TV Series, 2022)</figcaption>
+      </figure>
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/drt6yWo8GzeGswBXCSWuK9;960x540.jpeg?auto=webp" alt="Concept art for The Sandman (2022) - 3" />
+        <figcaption>Concept Painting for “The Sandman” (TV Series, 2022)</figcaption>
+      </figure>
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/4tZsp7voCqpzTmvJJ5ytr2;960x540.jpeg?auto=webp" alt="Concept art for The Sandman (2022) - 4" />
+        <figcaption>Concept Painting for “The Sandman” (TV Series, 2022)</figcaption>
+      </figure>
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/atXpCEzeCL7LuYTc3rC3hs;960x540.jpeg?auto=webp" alt="Concept art for The Sandman (2022) - 5" />
+        <figcaption>Concept Painting for “The Sandman” (TV Series, 2022)</figcaption>
+      </figure>
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/dluuTtdA6OtnIf7jXSA2lH;960x540.jpeg?auto=webp" alt="Concept art for The Sandman (2022) - 6" />
+        <figcaption>Concept Painting for “The Sandman” (TV Series, 2022)</figcaption>
+      </figure>
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/8WZd54TrYluPH3qiuAcoYH;960x540.jpeg?auto=webp" alt="Concept art for The Sandman (2022) - 7" />
+        <figcaption>Concept Painting for “The Sandman” (TV Series, 2022)</figcaption>
+      </figure>
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/4ii0uyGCaWZ9lx2vdYRH6J;960x540.jpeg?auto=webp" alt="Concept art for The Sandman (2022) - 8" />
+        <figcaption>Concept Painting for “The Sandman” (TV Series, 2022)</figcaption>
+      </figure>
+      <!-- Alice Through the Looking Glass (additional) -->
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/dI0cuIYpRMWH8uFUF7Dj3R;960x540.jpeg?auto=webp" alt="Concept art for Alice Through the Looking Glass (2016) - 2" />
+        <figcaption>Concept Painting for “Alice Through the Looking Glass” (2016)</figcaption>
+      </figure>
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/6QmKig5vZLSMfZpQEWnBwY;960x540.jpeg?auto=webp" alt="Concept art for Alice Through the Looking Glass (2016) - 3" />
+        <figcaption>Concept Painting for “Alice Through the Looking Glass” (2016)</figcaption>
+      </figure>
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/9WxH2nFCO15ZVLHSR6mOr;960x540.jpeg?auto=webp" alt="Concept art for Alice Through the Looking Glass (2016) - 4" />
+        <figcaption>Concept Painting for “Alice Through the Looking Glass” (2016)</figcaption>
+      </figure>
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/dYskj6XkcFMxQRErVfU5a5;960x540.jpeg?auto=webp" alt="Concept art for Alice Through the Looking Glass (2016) - 5" />
+        <figcaption>Concept Painting for “Alice Through the Looking Glass” (2016)</figcaption>
+      </figure>
+      <!-- Dneg project -->
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/6ZJipX0zBm9eGqtMQKvYBw;960x540.jpeg?auto=webp" alt="Digital painting for a Double Negative project" />
+        <figcaption>Digital Painting for a Double Negative (DNeg) project</figcaption>
+      </figure>
+      <!-- Mirror Mirror -->
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/5mrMJeqVVdq1lf48PHGJp4;960x540.jpeg?auto=webp" alt="Concept art for Mirror Mirror (2012) - 1" />
+        <figcaption>Concept for <em>Mirror Mirror</em> (2012)</figcaption>
+      </figure>
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/5z2MdRxLsgNfFXa8QqpDLb;960x540.jpeg?auto=webp" alt="Concept art for Mirror Mirror (2012) - 2" />
+        <figcaption>Concept for <em>Mirror Mirror</em> (2012)</figcaption>
+      </figure>
+      <!-- Doctor Who -->
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/e6mEN6uOfgmXOH4Enl7I41;960x540.jpeg?auto=webp" alt="Concept art for Doctor Who series" />
+        <figcaption>Concept for <em>Doctor Who</em> (TV Series)</figcaption>
+      </figure>
+      <!-- Game of Thrones -->
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/4Qi1VUJj1iLt3c3Vt9A0Bt;960x540.jpeg?auto=webp" alt="Concept art for Game of Thrones Season 1 - 1" />
+        <figcaption>Concept for <em>Game of Thrones</em>, Season 1 (2011)</figcaption>
+      </figure>
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/iYQuqyL0L2XJVUyXZs0aP;960x540.jpeg?auto=webp" alt="Concept art for Game of Thrones Season 1 - 2" />
+        <figcaption>Concept for <em>Game of Thrones</em>, Season 1 (2011)</figcaption>
+      </figure>
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/3QuQYqw3IFEUx2rdP7TxxL;960x540.jpeg?auto=webp" alt="Concept art for Game of Thrones Season 1 - 3" />
+        <figcaption>Concept for <em>Game of Thrones</em>, Season 1 (2011)</figcaption>
+      </figure>
+      <!-- Qatar Advert -->
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/dX53w5MXcEGfOMfMSkNwS6;960x540.jpeg?auto=webp" alt="Concept art for Qatar advertisement" />
+        <figcaption>Concept for Qatar Advert (commercial project)</figcaption>
+      </figure>
+      <!-- Jane Eyre -->
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/dAASwMuD6dKAsD5kLvD7w9;960x540.jpeg?auto=webp" alt="Concept art for Jane Eyre (2011)" />
+        <figcaption>Concept for <em>Jane Eyre</em> (2011)</figcaption>
+      </figure>
+      <!-- Atlantis -->
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/jGk7OB6gm7nHrq6QTlDMSP;960x540.jpeg?auto=webp" alt="Concept art for Atlantis TV series (2013)" />
+        <figcaption>Concept for <em>Atlantis</em> TV Series (2013)</figcaption>
+      </figure>
+      <!-- Merlin (additional) -->
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/btzOIgvMJ0CwCwtSwp0Tqi;960x540.jpeg?auto=webp" alt="Concept art for Merlin (2014) - additional" />
+        <figcaption>Concept for <em>Merlin</em> TV Series (2014)</figcaption>
+      </figure>
+      <!-- The Lost City -->
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/dowjYprVa0edQa2gfLJM88;960x540.jpeg?auto=webp" alt="Concept art for The Lost City (2022) - 1" />
+        <figcaption>Concept for <em>The Lost City</em> (2022)</figcaption>
+      </figure>
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/dC3v0Niaqjv9UBbPiS3MtR;960x540.jpeg?auto=webp" alt="Concept art for The Lost City (2022) - 2" />
+        <figcaption>Concept for <em>The Lost City</em> (2022)</figcaption>
+      </figure>
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/kLu3DEn0wVSyH80lAq5Qfz;960x540.jpeg?auto=webp" alt="Concept art for The Lost City (2022) - 3" />
+        <figcaption>Concept for <em>The Lost City</em> (2022)</figcaption>
+      </figure>
+      <!-- Black Sea -->
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/iavBx4GpAZD1cBlmau9wej;960x540.jpeg?auto=webp" alt="Concept art for Black Sea (2014)" />
+        <figcaption>Concept for <em>Black Sea</em> (2014 film)</figcaption>
+      </figure>
+      <!-- The Lost City (additional) -->
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/5sZKFTLwAiC9TtL1HvkJIn;960x540.jpeg?auto=webp" alt="Concept art for The Lost City (2022) - 4" />
+        <figcaption>Concept for <em>The Lost City</em> (2022)</figcaption>
+      </figure>
+      <!-- The Great Season 3 -->
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/ej5kVXQKkNr9C634wjiML;960x540.jpeg?auto=webp" alt="Concept art for The Great Season 3 - 1" />
+        <figcaption>Concept Art for <em>The Great</em> – Season 3</figcaption>
+      </figure>
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/cckdjjNdIwHQ3DaJk9Ewj;960x540.jpeg?auto=webp" alt="Concept art for The Great Season 3 - 2" />
+        <figcaption>Concept Art for <em>The Great</em> – Season 3</figcaption>
+      </figure>
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/hjkkNRznkJxLqojGvM1xL5;960x540.jpeg?auto=webp" alt="Concept art for The Great Season 3 - 3" />
+        <figcaption>Concept Art for <em>The Great</em> – Season 3</figcaption>
+      </figure>
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/6DpAovjRJBkj8pBn0ZBOMm;960x540.jpeg?auto=webp" alt="Concept art for The Great Season 3 - 4" />
+        <figcaption>Concept Art for <em>The Great</em> – Season 3</figcaption>
+      </figure>
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/b9Vgc4wSXqPHf4EQRbjgT;960x540.jpeg?auto=webp" alt="Concept art for The Great Season 3 - 5" />
+        <figcaption>Concept Art for <em>The Great</em> – Season 3</figcaption>
+      </figure>
+      <figure>
+        <img src="https://carbon-media.accelerator.net/0000000l04Z/g9zZkB4C7imP8gpqI1VVEx;960x540.jpeg?auto=webp" alt="Concept art for The Great Season 3 - 6" />
+        <figcaption>Concept Art for <em>The Great</em> – Season 3</figcaption>
+      </figure>
     </div>
+    <p style="margin-top:30px;"><em>*The slideshow above showcases concept paintings Lizzie created for major studios (Disney, Netflix, Hulu, Warner Bros., etc.), demonstrating the range of her work.*</em></p>
   </section>
 
   <!-- CV Section -->
   <section id="cv">
     <h2>CV</h2>
-    <!-- Preserve existing CV content (e.g., list of credits or downloadable CV) -->
-    <div class="cv-content">
-      <!-- ... existing CV details ... -->
-    </div>
+    <p>This section presents Lizzie Bentley’s full curriculum vitae, including her education, affiliations, and a comprehensive list of film and television credits. You can also <a href="LizzieBentley_CV.pdf" target="_blank" download>download a PDF version of the CV</a>.</p>
+    <h3>Education & Training</h3>
+    <ul>
+      <li><strong>Oxford University (Ruskin School of Art)</strong> – MA (Oxon) Fine Art, 1990–1993</li>
+      <li><strong>Heatherley’s School of Art</strong> – Courses in Fine Art (2000–2005)</li>
+      <li><strong>Life Painting with Francis Bowyer</strong> – Richmond (2007–2009)</li>
+      <li><strong>Studio Practice with Jason Bowyer NEAC</strong> – Kew Steam Museum (2016–2017)</li>
+      <li>Additional classes at the Prince’s Drawing School, Slade School of Art (Summer programs), and The London School of Painting and Drawing with Andy Pankhurst.</li>
+    </ul>
+    <p><strong>Professional Membership:</strong> Member of the British Film Designers Guild.</p>
+    <h3>Professional Artwork & Teaching (2023–2025)</h3>
+    <p>During 2023–24, with the industry-wide Writers/Actors strike affecting film work, Lizzie provided commissioned artwork to various interior designers. Her artwork is featured in venues such as:</p>
+    <ul>
+      <li>The Lainston House (Hotel), Hampshire</li>
+      <li>Hedsor House, Buckinghamshire</li>
+      <li>Sherborne House, Cheltenham</li>
+      <li>Ansty Hall, Coventry</li>
+      <li>Sloane Club, Chelsea</li>
+    </ul>
+    <p>Lizzie also began teaching oil painting, life drawing, and portrait painting classes (see News section for details). She continues to paint and take on new commissions.</p>
+    <h3>Film and TV Credits:</h3>
+    <p><em>(Lizzie has 20 years of experience as a Digital Matte Painter and Concept Artist in film and television. Below is a list of her credits.)</em></p>
+    <ul>
+      <li><strong>2024 –</strong> <em>Hamlet</em> – Digital Matte Painter</li>
+      <li><strong>2024 –</strong> <em>The Woman King</em> – Digital Matte Painter</li>
+      <li><strong>2023 –</strong> <em>The Great</em> (Season 3) – Concept Artist</li>
+      <li><strong>2022 –</strong> <em>The Letter for the King</em> – Digital Matte Painter (TV Series, 1 episode)</li>
+      <li><strong>2022 –</strong> <em>The Sandman</em> (Netflix series) – Concept Artist (11 episodes)</li>
+      <li><strong>2020 –</strong> <em>The Letter for the King</em> – Digital Matte Painter (TV Series, 1 episode)</li>
+      <li><strong>2020 –</strong> <em>The Sandman</em> – Concept Artist (pre-production)</li>
+      <li><strong>2016 –</strong> <em>Black Mirror: "Nosedive"</em> – Matte Painter (TV Series, 1 episode)</li>
+      <li><strong>2016 –</strong> <em>Alice Through the Looking Glass</em> – Concept Artist (Feature Film)</li>
+      <li><strong>2016 –</strong> <em>Miss Peregrine’s Home for Peculiar Children</em> – Concept Artist</li>
+      <li><strong>2015 –</strong> <em>Terminator Genisys</em> – Concept Artist</li>
+      <li><strong>2014 –</strong> <em>Black Sea</em> – Concept & Matte Painter</li>
+      <li><strong>2014 –</strong> <em>Pride</em> – Matte Painter / Concept Artist</li>
+      <li><strong>2013–2012 –</strong> <em>Merlin</em> (TV Series, 6 episodes) – Concept Artist; (2011, 1 episode) – Matte Painter</li>
+      <li><strong>2012 –</strong> <em>Great Expectations</em> – Digital Matte Painter (Lipsync Post)</li>
+      <li><strong>2012 –</strong> <em>Mirror Mirror</em> – Digital Matte Painter (Prime Focus Film London)</li>
+      <li><strong>2011 –</strong> <em>Game of Thrones</em> (Season 1, 10 episodes) – Digital Matte Painter</li>
+      <li><strong>2011 –</strong> <em>The Tree of Life</em> – Digital Artist (Double Negative)</li>
+      <li><strong>2011 –</strong> <em>Jane Eyre</em> – Digital Matte Painter (BlueBolt)</li>
+      <li><strong>2010 –</strong> <em>Green Zone</em> – Matte Painter (Double Negative)</li>
+      <li><strong>2009 –</strong> <em>Fast & Furious</em> – Matte Painter (Double Negative)</li>
+      <li><strong>2008 –</strong> <em>Inkheart</em> – Digital Matte Painter</li>
+      <li><strong>2008 –</strong> <em>The Dark Knight</em> – Matte Painter (Double Negative)</li>
+      <li><strong>2008 –</strong> <em>Hellboy II: The Golden Army</em> – Matte Painter (Double Negative)</li>
+      <li><strong>2007 –</strong> <em>Fred Claus</em> – Digital Matte Artist (Rainmaker UK)</li>
+      <li><strong>2007 –</strong> <em>Blood & Chocolate</em> – Digital Matte Painter (Framestore CFC)</li>
+      <li><strong>2006 –</strong> <em>Superman Returns</em> – Matte Painter (Framestore CFC)</li>
+      <li><strong>2006 –</strong> <em>Ocean Odyssey</em> (TV Movie) – Digital Matte Painter</li>
+      <li><strong>2005 –</strong> <em>The Curse of the Were-Rabbit</em> – Digital Compositor</li>
+      <li><strong>2005 –</strong> <em>Kingdom of Heaven</em> – Digital Matte Painter (MPC)</li>
+      <li><strong>2004 –</strong> <em>AVP: Alien vs. Predator</em> – Digital Matte Painter (MPC)</li>
+      <li><strong>2004 –</strong> <em>Troy</em> – Matte Painter (MPC)</li>
+      <li><em>For a full list of credits and details, see Lizzie’s profiles on <a href="https://www.imdb.com/name/nm2300242/" target="_blank">IMDb</a> or <a href="https://www.artstation.com/lizziebentley" target="_blank">ArtStation</a>.</em></li>
+    </ul>
+    <p><strong>Contact Information:</strong> lizziebentley@gmail.com &nbsp;|&nbsp; +44 7747 612830 (UK)</p>
   </section>
 
   <!-- Contact Section -->
   <section id="contact">
     <h2>Contact</h2>
-    <p>Tel: 07747 612839</p>
-    <p>Email: <a href="mailto:lizziebentley@gmail.com">lizziebentley@gmail.com</a></p>
-    <!-- Preserve any additional contact content (e.g., contact form or social links) -->
+    <p>For inquiries, purchases, class sign-ups, or commissions, please feel free to get in touch with Lizzie via phone or email, or by using the contact form below.</p>
+    <p><strong>Phone:</strong> 07747 612830 &nbsp; &nbsp; <strong>Email:</strong> <a href="mailto:lizziebentley@gmail.com">lizziebentley@gmail.com</a></p>
+    <form action="https://formsubmit.co/geoclifton@icloud.com" method="POST">
+      <!-- The form will be handled by FormSubmit to email the submission -->
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+      
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+      
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+      
+      <!-- Anti-spam honeypot (invisible to users) -->
+      <input type="text" name="_honey" style="display:none" />
+      <!-- Disable Captcha (optional) -->
+      <input type="hidden" name="_captcha" value="false" />
+      <!-- Redirect to a thank-you page or show inline thank you (optional _next field) -->
+      <!-- <input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html" /> -->
+      
+      <button type="submit">Send Message</button>
+    </form>
   </section>
 
-  <!-- Script for hamburger menu toggle -->
+  <!-- Lightbox Overlay (hidden by default) -->
+  <div id="lightbox-overlay" onclick="closeLightbox()">
+    <img id="lightbox-img" src="#" alt="Expanded view" />
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <ul class="footer-nav">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#available-paintings-gallery">Available Paintings</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#printmaking">Printmaking</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#concept-art">Concept Art</a></li>
+        <li><a href="#cv">CV</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="contact-info">
+        <p><strong>Contact:</strong> 07747 612830 &nbsp;|&nbsp; <a href="mailto:lizziebentley@gmail.com" style="color:#fff;">lizziebentley@gmail.com</a></p>
+      </div>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/lizzie_bentley_paintings" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/LizzieBentleyPaintings" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.linkedin.com/in/lizziebentley/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <p style="margin-top:10px; font-size:0.9em;">&copy; Lizzie Bentley</p>
+    </div>
+  </footer>
+
+  <!-- Scripts for navigation toggle and lightbox -->
   <script>
-    function toggleNav() {
-      var nav = document.querySelector('nav');
-      nav.classList.toggle('nav-open');
+    // Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
+    });
+
+    // Lightbox functionality
+    const lightboxOverlay = document.getElementById('lightbox-overlay');
+    const lightboxImg = document.getElementById('lightbox-img');
+    // Add click handler to all images in sections (except those already in forms or logos)
+    document.querySelectorAll('section img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxOverlay.style.display = 'flex';
+      });
+    });
+    // Close lightbox when overlay or image is clicked
+    function closeLightbox() {
+      lightboxOverlay.style.display = 'none';
+      lightboxImg.src = '#';
     }
   </script>
 
 </body>
 </html>
+
