@@ -1,389 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lizzie Bentley – Personal Site</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Lizzie Bentley – Paintings & Printmaking</title>
   <style>
-    /* Basic Reset and Typography */
-    *, *::before, *::after {
-      box-sizing: border-box;
+    :root {
+      /* Example palette from original site */
+      --primary: #2a2a2a;
+      --accent: #a67c52;
+      --bg: #f5f3f0;
+      --text: #333;
     }
-    body {
-      margin: 0;
-      font-family: sans-serif;  /* Simple clean font */
-      color: #333;             /* Dark gray text for readability */
-      background: #fff;        /* White background */
-      line-height: 1.6;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 0;
-      color: #000;            /* Headings in solid black for contrast */
-    }
-    p {
-      margin: 0.5em 0;
-    }
-    a {
-      color: #000;            /* Link color matches text (could use an accent) */
-      text-decoration: none;
-      border-bottom: 1px dotted #999;
-      transition: border-color 0.3s;
-    }
-    a:hover {
-      border-bottom: 1px solid #000;
-    }
-
-    /* Layout Containers */
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-    /* Site Title (Logo text) */
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-
-    /* Navigation */
-    nav {
-      display: flex;
-      gap: 1rem;
-    }
-    nav a {
-      padding: 0.25rem 0;
-    }
-    /* Hide nav links on mobile, show toggle button */
-    .menu-toggle {
-      display: none;
-      font-size: 1.5rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-    .menu-toggle:focus {
-      outline: 2px solid #000;
-    }
-    @media (max-width: 600px) {
-      nav {
-        display: none;               /* hide nav links on small screens */
-        flex-direction: column;
-        background: #fff;
-        border-top: 1px solid #ccc;
-        padding: 0.5rem 0;
-      }
-      nav.open {
-        display: flex;              /* show nav when toggled */
-      }
-      .menu-toggle {
-        display: block;             /* show menu button on small screens */
-      }
-    }
-
-    /* Sections */
-    section {
-      padding: 4rem 0;
-    }
-    section:nth-of-type(odd) {
-      /* Optionally, use a slight background difference for alternating sections */
-      background: #f9f9f9;
-    }
-    section h2 {
-      margin-bottom: 1rem;
-    }
-
-    /* Blog section styles */
-    #blog article {
-      margin-bottom: 2rem;
-    }
-    #blog h3 {
-      margin: 0.2rem 0;
-    }
-    #blog .post-date {
-      font-size: 0.9rem;
-      color: #777;
-    }
-
-    /* Gallery grid styles */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 1rem;
-    }
-    .gallery-grid img {
-      width: 100%;
-      height: auto;
-      display: block;
-      background: #ccc;       /* placeholder grey background */
-      /* Provide a fixed aspect ratio for placeholders */
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      transition: transform 0.3s;
-    }
-    .gallery-grid img:hover {
-      transform: scale(1.02);
-    }
-
-    /* Product grid (Shop section) */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-    }
-    .product {
-      border: 1px solid #eee;
-      padding: 1rem;
-      text-align: center;
-    }
-    .product img {
-      width: 100%;
-      height: auto;
-      background: #ccc;
-      aspect-ratio: 1/1;
-      object-fit: cover;
-      transition: transform 0.3s;
-    }
-    .product img:hover {
-      transform: scale(1.02);
-    }
-    .product h3 {
-      font-size: 1.1rem;
-      margin: 0.5rem 0 0.25rem;
-    }
-    .product .price {
-      font-weight: bold;
-      color: #000;
-      margin-bottom: 0.5rem;
-    }
-    .product button {
-      padding: 0.5rem 1rem;
-      font-size: 0.9rem;
-      background: none;
-      border: 2px solid #000;
-      cursor: pointer;
-      transition: background 0.3s, color 0.3s;
-    }
-    .product button:hover {
-      background: #000;
-      color: #fff;
-    }
-    .product button:focus {
-      outline: 2px solid #000;
-    }
-
-    /* Contact form styles */
-    .contact-form {
-      max-width: 600px;
-      margin: 0.5rem 0;
-    }
-    .contact-form label {
-      display: block;
-      margin: 0.5rem 0 0.25rem;
-      font-weight: 500;
-    }
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 0.5rem;
-      font: inherit;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .contact-form textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      border-color: #999;
-      outline: none;
-    }
-    .contact-form button {
-      margin-top: 0.5rem;
-      padding: 0.6rem 1.2rem;
-      font-size: 1rem;
-      font-weight: 600;
-      background: none;
-      border: 2px solid #000;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background 0.3s, color 0.3s;
-    }
-    .contact-form button:hover {
-      background: #000;
-      color: #fff;
-    }
-    .contact-form button:focus {
-      outline: 2px solid #000;
-    }
-
-    /* Footer */
-    footer {
-      padding: 2rem 0;
-      text-align: center;
-      color: #777;
-      font-size: 0.9rem;
-    }
-    footer a {
-      color: #777;
-      margin: 0 0.5rem;
-    }
-    footer a:hover {
-      color: #000;
-    }
-
-    /* Fade-in animation (for sections and other elements) */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+    body { margin:0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: var(--text); background: var(--bg); }
+    header { position: sticky; top:0; background: var(--primary); color: white; padding: 1rem; z-index:1000; }
+    header nav a { color:white; margin:0 1rem; text-decoration:none; }
+    section { padding: 4rem 1rem; max-width: 960px; margin:0 auto; }
+    .hero { position: relative; overflow:hidden; }
+    .hero img { width:100%; display:block;}
+    .bio { font-size:1.1rem; line-height:1.6; }
+    .gallery-filters { margin-bottom: 1rem; }
+    .gallery-filters button { margin:0 .5rem .5rem 0; padding: .5rem 1rem; background: var(--accent); color:white; border:none; cursor:pointer;}
+    .gallery-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:1rem; }
+    .artwork { background: white; padding:1rem; }
+    .artwork img { width:100%; height:auto; display:block; }
+    .newsletter { background: var(--accent); color:white; padding:2rem; text-align:center;}
+    form input[type="email"] { padding:.5rem; width:80%; max-width:300px; }
+    form button { padding:.7rem 1.5rem; background: var(--primary); color:white; border:none; cursor:pointer; }
+    .contact form { display:flex; flex-direction:column; max-width:400px; }
+    .contact input, .contact textarea { margin-bottom:1rem; padding:.5rem; font-size:1rem; }
+    footer { text-align:center; padding:2rem 1rem; font-size:.9rem; }
+    @media (max-width:600px) {
+      header nav a { display:block; margin: .5rem 0; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Header & Navigation -->
-    <header>
-      <div class="logo">Lizzie Bentley</div>
-      <button class="menu-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
-      <nav id="mainNav">
-        <a href="#home">Home</a>
-        <a href="#blog">Blog</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#shop">Shop</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
 
-    <!-- Home/Introduction Section -->
-    <section id="home" class="fade-in">
-      <h2>Welcome</h2>
-      <p>Hello, I’m <strong>Lizzie Bentley</strong>, an oil painter and printmaker based in Stratford-upon-Avon, UK. Welcome to my personal website where I share my artwork and updates.</p>
-    </section>
+<header>
+  <nav>
+    <a href="#hero">Home</a>
+    <a href="#bio">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#prints">Printmaking</a>
+    <a href="#concept">Concept Art</a>
+    <a href="#news">News</a>
+    <a href="#cv">CV</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-    <!-- Blog Section -->
-    <section id="blog" class="fade-in">
-      <h2>Latest Updates</h2>
-      <article>
-        <h3>Placeholder Post Title 1</h3>
-        <div class="post-date">July 1, 2025</div>
-        <p>This is a brief excerpt of the first blog post. It gives an idea of what the update is about. <a href="#">Read more…</a></p>
-      </article>
-      <article>
-        <h3>Placeholder Post Title 2</h3>
-        <div class="post-date">June 15, 2025</div>
-        <p>This is a brief excerpt of the second blog post. It gives an idea of another update or news item. <a href="#">Read more…</a></p>
-      </article>
-    </section>
+<section id="hero" class="hero">
+  <!-- Replace src with actual original site featured images -->
+  <img src="images/featured1.jpg" alt="Featured artwork">
+</section>
 
-    <!-- Gallery/Portfolio Section -->
-    <section id="gallery" class="fade-in">
-      <h2>Portfolio</h2>
-      <div class="gallery-grid">
-        <!-- Six placeholder images (e.g., artwork thumbnails) -->
-        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Artwork 1" />
-        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Artwork 2" />
-        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Artwork 3" />
-        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Artwork 4" />
-        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Artwork 5" />
-        <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Artwork 6" />
-      </div>
-    </section>
+<section id="bio" class="bio">
+  <h2>About Lizzie Bentley</h2>
+  <p>Short artist bio or statement goes here — summarizing your vision, approach, and artistic journey.</p>
+</section>
 
-    <!-- E-commerce/Product Section -->
-    <section id="shop" class="fade-in">
-      <h2>Shop</h2>
-      <div class="product-grid">
-        <div class="product">
-          <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Product 1" />
-          <h3>Product Name 1</h3>
-          <div class="price">$49.00</div>
-          <button type="button">Add to Cart</button>
-        </div>
-        <div class="product">
-          <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Product 2" />
-          <h3>Product Name 2</h3>
-          <div class="price">$79.00</div>
-          <button type="button">Add to Cart</button>
-        </div>
-        <div class="product">
-          <img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="Product 3" />
-          <h3>Product Name 3</h3>
-          <div class="price">$120.00</div>
-          <button type="button">Add to Cart</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="fade-in">
-      <h2>Contact Me</h2>
-      <p>Interested in my work or have a question? Feel free to reach out!</p>
-      <!-- Contact info (placeholder) -->
-      <p><strong>Email:</strong> <a href="mailto:lizzie@example.com">lizzie@example.com</a><br>
-         <strong>Phone:</strong> 0123-456-789</p>
-      <!-- Contact Form -->
-      <div class="contact-form">
-        <form action="#" method="post">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" placeholder="Your name" required />
-
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com" required />
-
-          <label for="message">Message:</label>
-          <textarea id="message" name="message" placeholder="Your message..." required></textarea>
-
-          <button type="submit">Send Message</button>
-        </form>
-      </div>
-    </section>
-
-    <!-- Footer with social links -->
-    <footer class="fade-in">
-      <p>Connect with me: 
-        <a href="#" target="_blank" rel="noopener">Twitter</a> |
-        <a href="#" target="_blank" rel="noopener">Instagram</a> |
-        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
-      </p>
-      <p>&copy; 2025 Lizzie Bentley</p>
-    </footer>
+<section id="gallery">
+  <h2>Available Paintings & Gallery</h2>
+  <div class="gallery-filters">
+    <button data-filter="all">All</button>
+    <button data-filter="paintings">Paintings</button>
+    <button data-filter="prints">Prints</button>
+    <button data-filter="concept">Concept Art</button>
   </div>
+  <div class="gallery-grid">
+    <!-- Repeat for each artwork -->
+    <div class="artwork" data-type="paintings" data-available="yes">
+      <img src="images/art1.jpg" alt="Artwork title">
+      <h3>Artwork Title</h3>
+      <p>Oil on canvas, 2025</p>
+      <button disabled>Buy it now (coming soon)</button>
+    </div>
+    <!-- More artworks... -->
+  </div>
+</section>
 
-  <!-- Embedded JavaScript for interactivity -->
-  <script>
-    // Responsive nav toggle
-    const navToggle = document.getElementById('navToggle');
-    const mainNav = document.getElementById('mainNav');
-    navToggle.addEventListener('click', () => {
-      mainNav.classList.toggle('open');
-    });
+<section id="prints">
+  <h2>Printmaking</h2>
+  <div class="gallery-grid">
+    <!-- Print thumbnails -->
+    <div class="artwork" data-type="prints" data-available="yes">
+      <img src="images/print1.jpg" alt="Print title">
+      <h3>Print Title</h3>
+      <p>Linocut, 2024</p>
+      <button disabled>Buy it now (coming soon)</button>
+    </div>
+  </div>
+</section>
 
-    // Fade-in on scroll using Intersection Observer
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          obs.unobserve(entry.target);
-        }
+<section id="concept">
+  <h2>Concept Art</h2>
+  <div class="gallery-grid">
+    <div class="artwork" data-type="concept" data-available="yes">
+      <img src="images/concept1.jpg" alt="Concept piece title">
+      <h3>Concept Title</h3>
+      <p>Digital illustration, 2023</p>
+      <button disabled>Buy it now (coming soon)</button>
+    </div>
+  </div>
+</section>
+
+<section id="news">
+  <h2>News & Updates</h2>
+  <p>Latest exhibitions, press, and events — update periodically.</p>
+</section>
+
+<section id="cv">
+  <h2>CV</h2>
+  <p><a href="docs/Lizzie_Bentley_CV.pdf" download>Download my CV (PDF)</a></p>
+</section>
+
+<section id="newsletter" class="newsletter">
+  <h2>Subscribe to my Newsletter</h2>
+  <form>
+    <input type="email" placeholder="Your email address" required>
+    <button type="submit">Subscribe</button>
+  </form>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <form>
+    <input type="text" placeholder="Your name" required>
+    <input type="email" placeholder="Your email" required>
+    <textarea rows="4" placeholder="Your message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  <p>&copy; 2025 Lizzie Bentley. All rights reserved.</p>
+</footer>
+
+<script>
+  // Filter functionality
+  document.querySelectorAll('.gallery-filters button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+      document.querySelectorAll('.artwork').forEach(card => {
+        card.style.display = (filter === 'all' || card.dataset.type === filter) ? 'block' : 'none';
       });
-    }, {
-      threshold: 0.1  // trigger when 10% of the element is visible
     });
-    // Observe all elements with class 'fade-in'
-    document.querySelectorAll('.fade-in').forEach(el => {
-      observer.observe(el);
-    });
-  </script>
+  });
+
+  // Placeholder newsletter submission & contact form handlers
+  document.querySelector('#newsletter form').addEventListener('submit', e => {
+    e.preventDefault();
+    alert('Thanks for subscribing!');
+  });
+  document.querySelector('#contact form').addEventListener('submit', e => {
+    e.preventDefault();
+    alert('Message sent!');
+  });
+</script>
+
 </body>
 </html>
