@@ -4,133 +4,154 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Clifton Maths - One-on-One Tutoring</title>
+  <meta name="description" content="Clifton Maths offers one-on-one mathematics tutoring by George Clifton, an Oxford mathematics student." />
 </head>
 <body>
-
-  <!-- Hero Banner Section -->
-  <main>
-    <section id="hero" class="hero-section">
-      <div class="container">
-        <h1>Clifton Maths Tutoring</h1>
-        <p>Achieve your best results with one-on-one support from an Oxford Mathematics student.</p>
-        <a href="#contact" class="btn cta-btn">Get in Touch</a>
+  <!-- Skip to main content link for accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <!-- Sticky top navigation -->
+  <header class="site-header" role="banner">
+    <nav class="top-nav" role="navigation" aria-label="Main navigation">
+      <div class="logo">
+        <a href="#">Clifton Maths</a>
+      </div>
+      <!-- Mobile menu toggle button -->
+      <button class="nav-toggle" aria-label="Open navigation menu" aria-controls="main-nav-menu" aria-expanded="false">☰</button>
+      <ul id="main-nav-menu" class="nav-menu">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <!-- Main content starts here -->
+  <main id="main-content" tabindex="-1" role="main">
+    <!-- Hero Banner Section -->
+    <section id="hero" class="hero-banner" aria-labelledby="hero-heading">
+      <div class="hero-content">
+        <h1 id="hero-heading">Clifton Maths</h1>
+        <p class="hero-tagline">One-on-one maths tutoring by George Clifton, a first-year Oxford mathematics student.</p>
+        <a href="#contact" class="btn hero-cta">Get Started</a>
       </div>
     </section>
-
+    
     <!-- Services Overview Section -->
-    <section id="services" class="services-section">
-      <div class="container">
-        <h2>Our Tutoring Services</h2>
-        <div class="services-cards">
-          <div class="service-card">
-            <h3>GCSE Maths Tuition</h3>
-            <p>Build a strong foundation and excel in your GCSE Maths with tailored one-on-one sessions.</p>
-          </div>
-          <div class="service-card">
-            <h3>A-Level Maths Tuition</h3>
-            <p>Master the A-Level Maths curriculum and achieve top grades with expert guidance and support.</p>
-          </div>
-          <div class="service-card">
-            <h3>Exam &amp; Revision Strategies</h3>
-            <p>Get ready for exams with targeted practice, past paper analysis, and proven revision techniques.</p>
-          </div>
+    <section id="services" class="services-section" aria-labelledby="services-heading">
+      <h2 id="services-heading">Tutoring Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Personalized 1:1 Tutoring</h3>
+          <p>Individualized lessons tailored to each student's needs and learning style.</p>
+        </div>
+        <div class="service-card">
+          <h3>Exam Preparation</h3>
+          <p>Focused revision sessions and past paper practice to boost exam performance.</p>
+        </div>
+        <div class="service-card">
+          <h3>Flexible Scheduling</h3>
+          <p>Convenient session times, including evenings and weekends, to fit your schedule.</p>
         </div>
       </div>
     </section>
-
+    
     <!-- Free Resources Section -->
-    <section id="resources" class="resources-section">
-      <div class="container">
-        <h2>Free Resources</h2>
-        <div class="resources-cards">
-          <div class="resource-card">
-            <h3>Topic Worksheets</h3>
-            <p>Downloadable worksheets for extra practice on various maths topics. 
-              <a href="#">Download &raquo;</a>
-            </p>
-          </div>
-          <div class="resource-card">
-            <h3>Revision Notes</h3>
-            <p>Concise notes and summaries covering key concepts to help with revision. 
-              <a href="#">View Notes &raquo;</a>
-            </p>
-          </div>
-          <div class="resource-card">
-            <h3>Exam Techniques Guide</h3>
-            <p>Tips and strategies to improve exam performance and time management. 
-              <a href="#">Read Guide &raquo;</a>
-            </p>
-          </div>
-        </div>
+    <section id="resources" class="resources-section alt-bg" aria-labelledby="resources-heading">
+      <h2 id="resources-heading">Free Resources</h2>
+      <p>Explore free maths resources provided by Clifton Maths:</p>
+      <div class="resources-grid">
+        <article class="resource-card">
+          <h3>GCSE Algebra Worksheet</h3>
+          <p>Practice algebra problems with this worksheet covering key GCSE topics.</p>
+          <a href="#" class="resource-link">Download Worksheet</a>
+        </article>
+        <article class="resource-card">
+          <h3>A-Level Exam Tips Guide</h3>
+          <p>Learn effective study and exam techniques with this free A-Level maths guide.</p>
+          <a href="#" class="resource-link">View Guide</a>
+        </article>
+        <article class="resource-card">
+          <h3>Formula Cheat Sheet</h3>
+          <p>Quickly review essential formulas with this handy mathematics formula sheet.</p>
+          <a href="#" class="resource-link">Download Cheat Sheet</a>
+        </article>
+        <article class="resource-card">
+          <h3>Math Challenge Pack</h3>
+          <p>Challenge yourself with fun math puzzles and problem-solving exercises.</p>
+          <a href="#" class="resource-link">Try the Challenges</a>
+        </article>
       </div>
     </section>
-
+    
     <!-- Blog Previews Section -->
-    <section id="blog" class="blog-section">
-      <div class="container">
-        <h2>From the Blog</h2>
-        <div class="blog-cards">
-          <article class="blog-card">
-            <h3><a href="#">How to Ace Your Maths Exams</a></h3>
-            <p>Discover effective revision techniques and exam strategies that helped me secure top grades in Maths. <a href="#">Read More &raquo;</a></p>
-          </article>
-          <article class="blog-card">
-            <h3><a href="#">5 Tips to Improve in Maths</a></h3>
-            <p>Learn five practical tips to boost your understanding and confidence in maths, from daily practice to smart study habits. <a href="#">Read More &raquo;</a></p>
-          </article>
-          <!-- Add more blog-card articles as needed -->
-        </div>
+    <section id="blog" class="blog-section" aria-labelledby="blog-heading">
+      <h2 id="blog-heading">Latest Blog Posts</h2>
+      <div class="blog-grid">
+        <article class="blog-card">
+          <h3><a href="#">5 Tips to Improve in Maths</a></h3>
+          <p>Discover five effective strategies to boost your understanding and grades in mathematics.</p>
+          <a href="#" class="read-more">Read More</a>
+        </article>
+        <article class="blog-card">
+          <h3><a href="#">How to Tackle A-Level Mathematics</a></h3>
+          <p>Get insights into excelling at A-Level maths, from mastering the syllabus to effective exam techniques.</p>
+          <a href="#" class="read-more">Read More</a>
+        </article>
+        <article class="blog-card">
+          <h3><a href="#">The Benefits of One-on-One Tutoring</a></h3>
+          <p>Learn how personalized tutoring can improve a student's confidence and performance in maths.</p>
+          <a href="#" class="read-more">Read More</a>
+        </article>
       </div>
     </section>
-
+    
     <!-- About Section -->
-    <section id="about" class="about-section">
-      <div class="container">
-        <h2>About Me</h2>
-        <div class="about-content">
-          <!-- Optionally include an image or profile picture here -->
-          <!-- <div class="about-photo"><img src="profile.jpg" alt="George Clifton" /></div> -->
-          <div class="about-text">
-            <p>Hi, I'm <strong>George Clifton</strong>, a first-year Mathematics student at Oxford University and a passionate maths tutor. I achieved top grades in my GCSE and A-Level exams, and I'm here to help you do the same.</p>
-            <p>I offer personalized one-on-one tutoring tailored to each student's needs and learning style. Whether you need help with understanding core concepts, boosting your grades, or preparing for exams, I'm here to support you every step of the way.</p>
-            <p><em>I'm committed to making maths enjoyable and accessible, and I believe that with the right guidance, anyone can improve and excel in mathematics.</em></p>
-          </div>
-        </div>
-      </div>
+    <section id="about" class="about-section alt-bg" aria-labelledby="about-heading">
+      <h2 id="about-heading">About George</h2>
+      <p>I'm George Clifton, a first-year Mathematics student at Oxford University and the tutor behind Clifton Maths. I achieved top grades in my exams and have a passion for helping others excel in mathematics. Through patient, one-on-one guidance, I help students build confidence, master challenging concepts, and develop strong problem-solving skills. Whether you're preparing for GCSEs, A-Levels, or just looking to improve in maths, I'm here to support your journey.</p>
     </section>
-
+    
     <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-      <div class="container">
-        <h2>Get in Touch</h2>
-        <div class="contact-grid">
-          <div class="contact-form">
-            <form action="#" method="post">
-              <div class="form-field">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Your Name" required />
-              </div>
-              <div class="form-field">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Your Email" required />
-              </div>
-              <div class="form-field">
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-              </div>
-              <button type="submit" class="btn submit-btn">Send Message</button>
-            </form>
-          </div>
-          <div class="contact-info">
-            <p>Feel free to reach out via the form, or contact me directly at:</p>
-            <p>Email: <a href="mailto:george@cliftonmaths.com">george@cliftonmaths.com</a></p>
-            <p>Phone: <a href="tel:+441234567890">01234 567 890</a></p>
-            <p>Based in Oxford, UK. Available for online sessions or in-person sessions in the Oxford area.</p>
-          </div>
+    <section id="contact" class="contact-section" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Get in Touch</h2>
+      <p>Interested in improving your maths skills or have questions? Contact George to discuss how Clifton Maths can help you achieve your goals.</p>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <address>
+            Email: <a href="mailto:george@example.com">george@example.com</a><br />
+            Phone: <a href="tel:+441234567890">+44 1234 567 890</a><br />
+            Based in Oxford, UK
+          </address>
+          <p>Or fill out the form to send a message directly:</p>
+        </div>
+        <div class="contact-form-container">
+          <form action="#" method="post" class="contact-form" aria-label="Contact Form">
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your Name" />
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="your.email@example.com" />
+            </div>
+            <div class="form-field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" required placeholder="Your message"></textarea>
+            </div>
+            <button type="submit" class="btn submit-btn">Send Message</button>
+          </form>
         </div>
       </div>
     </section>
   </main>
-
+  
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <p>&copy; 2025 Clifton Maths. All rights reserved.</p>
+  </footer>
 </body>
 </html>
