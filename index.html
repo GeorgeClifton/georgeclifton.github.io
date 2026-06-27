@@ -4,26 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>George Clifton – Oxford Maths Tutor | GCSE, A-Level, MAT, TMUA & STEP</title>
+  <title>George Clifton – Oxford MAT Tutor</title>
 
   <meta
     name="description"
-    content="Online maths tutoring from George Clifton, an Oxford Mathematics student. GCSE, A-Level, Further Maths, MAT, TMUA, STEP and Oxbridge interview preparation."
+    content="Online MAT preparation with George Clifton, an Oxford Mathematics student. One-to-one tutoring for students applying to Oxford Mathematics and related courses."
   />
 
   <style>
     :root {
-      --bg: #f8f7f3;
-      --card: #ffffff;
-      --text: #151515;
-      --muted: #5f635f;
-      --accent: #234f3f;
-      --accent-light: #e3eee8;
-      --border: #ddd8cc;
-      --gold: #b28a3e;
-      --shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
-      --radius: 18px;
-      --max-width: 1100px;
+      --bg: #fbfaf7;
+      --text: #111111;
+      --muted: #5f5f5f;
+      --line: #ded8cc;
+      --accent: #1f3d35;
+      --soft: #f0ece3;
+      --max: 880px;
     }
 
     * {
@@ -36,165 +32,140 @@
 
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
       background: var(--bg);
-      line-height: 1.6;
-    }
-
-    h1, h2, h3, p {
-      margin-top: 0;
-    }
-
-    h1 {
-      font-size: clamp(2.4rem, 6vw, 4.6rem);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      margin-bottom: 1rem;
-    }
-
-    h2 {
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      margin-bottom: 1rem;
-    }
-
-    h3 {
-      font-size: 1.15rem;
-      margin-bottom: 0.5rem;
-    }
-
-    p {
-      color: var(--muted);
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover,
-    a:focus {
-      text-decoration: underline;
-    }
-
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.25rem;
+      color: var(--text);
+      line-height: 1.65;
     }
 
     header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(251, 250, 247, 0.94);
       position: sticky;
       top: 0;
       z-index: 10;
-      background: rgba(248, 247, 243, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
     }
 
     .nav {
-      max-width: var(--max-width);
+      max-width: var(--max);
       margin: 0 auto;
-      padding: 1rem 1.25rem;
+      padding: 18px 20px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      align-items: center;
+      gap: 20px;
     }
 
     .brand {
+      font-family: Arial, sans-serif;
+      font-size: 15px;
       font-weight: 700;
+      letter-spacing: 0.02em;
       color: var(--text);
-      letter-spacing: -0.02em;
+      text-decoration: none;
     }
 
-    nav ul {
+    nav {
       display: flex;
-      gap: 1rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      align-items: center;
+      gap: 18px;
       flex-wrap: wrap;
       justify-content: flex-end;
     }
 
     nav a {
-      font-size: 0.95rem;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
       color: var(--muted);
+      text-decoration: none;
     }
 
     nav a:hover {
       color: var(--accent);
     }
 
-    .nav-cta {
-      background: var(--accent);
-      color: #fff !important;
-      padding: 0.55rem 0.85rem;
-      border-radius: 999px;
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
-    .nav-cta:hover {
-      text-decoration: none;
-      background: #193b2f;
+    section {
+      padding: 70px 0;
+      border-bottom: 1px solid var(--line);
     }
 
     .hero {
-      padding: 5.5rem 0 4rem;
+      padding: 95px 0 85px;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--accent-light);
+    .label {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
       color: var(--accent);
-      padding: 0.45rem 0.75rem;
-      border-radius: 999px;
-      font-size: 0.9rem;
       font-weight: 700;
-      margin-bottom: 1.25rem;
+      margin-bottom: 22px;
     }
 
-    .hero-text {
-      font-size: 1.18rem;
-      max-width: 680px;
-      margin-bottom: 1.5rem;
+    h1 {
+      font-size: clamp(44px, 8vw, 76px);
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+      margin: 0 0 28px;
+      max-width: 780px;
+      font-weight: 500;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+      margin: 0 0 24px;
+      font-weight: 500;
+    }
+
+    h3 {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      margin: 0 0 8px;
+      color: var(--text);
+    }
+
+    p {
+      font-size: 19px;
+      color: var(--muted);
+      margin: 0 0 18px;
+      max-width: 720px;
+    }
+
+    .lead {
+      font-size: 23px;
+      color: #333;
+      max-width: 760px;
     }
 
     .hero-actions {
+      margin-top: 34px;
       display: flex;
-      gap: 0.8rem;
+      gap: 12px;
       flex-wrap: wrap;
-      margin-bottom: 1.5rem;
     }
 
     .button {
+      font-family: Arial, sans-serif;
       display: inline-block;
-      padding: 0.85rem 1.15rem;
+      padding: 13px 19px;
       border-radius: 999px;
+      text-decoration: none;
       font-weight: 700;
+      font-size: 14px;
       border: 1px solid var(--accent);
     }
 
     .button-primary {
       background: var(--accent);
-      color: #fff;
-    }
-
-    .button-primary:hover {
-      background: #193b2f;
-      text-decoration: none;
+      color: white;
     }
 
     .button-secondary {
@@ -202,256 +173,173 @@
       background: transparent;
     }
 
-    .button-secondary:hover {
-      background: var(--accent-light);
-      text-decoration: none;
+    .button:hover {
+      opacity: 0.88;
     }
 
-    .trust-row {
+    .small-row {
+      margin-top: 30px;
       display: flex;
-      gap: 0.75rem;
+      gap: 12px;
       flex-wrap: wrap;
-      margin-top: 1.25rem;
     }
 
-    .trust-pill {
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.65);
+    .pill {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: var(--muted);
+      border: 1px solid var(--line);
       border-radius: 999px;
-      padding: 0.5rem 0.75rem;
-      color: var(--muted);
-      font-size: 0.92rem;
+      padding: 7px 11px;
+      background: white;
     }
 
-    .hero-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-card h2 {
-      font-size: 1.35rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .hero-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .hero-card li {
-      padding: 0.65rem 0;
-      border-bottom: 1px solid var(--border);
-      color: var(--muted);
-    }
-
-    .hero-card li:last-child {
-      border-bottom: 0;
-    }
-
-    .section {
-      padding: 4rem 0;
-    }
-
-    .section-intro {
-      max-width: 720px;
-      margin-bottom: 2rem;
-    }
-
-    .grid {
+    .two-col {
       display: grid;
-      gap: 1rem;
-    }
-
-    .grid-3 {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    .grid-2 {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      margin-top: 34px;
     }
 
     .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.35rem;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+      background: white;
+      border: 1px solid var(--line);
+      padding: 24px;
     }
 
-    .card p:last-child {
+    .card p {
+      font-size: 16px;
       margin-bottom: 0;
     }
 
-    .card-highlight {
-      border-color: rgba(178, 138, 62, 0.55);
-      background: linear-gradient(180deg, #fff, #fbf6ec);
-    }
-
-    .subject-list {
+    .list {
       list-style: none;
       padding: 0;
-      margin: 1rem 0 0;
+      margin: 28px 0 0;
+      display: grid;
+      gap: 18px;
     }
 
-    .subject-list li {
-      margin-bottom: 0.45rem;
-      color: var(--muted);
-    }
-
-    .subject-list li::before {
-      content: "✓ ";
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    .steps {
-      counter-reset: step;
-    }
-
-    .step {
+    .list li {
+      padding-left: 26px;
       position: relative;
-      padding-left: 3rem;
+      color: var(--muted);
+      font-size: 18px;
     }
 
-    .step::before {
-      counter-increment: step;
-      content: counter(step);
+    .list li::before {
+      content: "—";
       position: absolute;
-      left: 1.25rem;
-      top: 1.35rem;
-      width: 1.8rem;
-      height: 1.8rem;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .method {
+      counter-reset: item;
+      display: grid;
+      gap: 22px;
+      margin-top: 32px;
+    }
+
+    .method-item {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .method-item::before {
+      counter-increment: item;
+      content: counter(item);
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
-      background: var(--accent);
-      color: #fff;
+      border: 1px solid var(--accent);
       display: grid;
       place-items: center;
+      font-family: Arial, sans-serif;
       font-weight: 700;
-      font-size: 0.9rem;
+      color: var(--accent);
     }
 
-    .quote {
-      font-size: 1.05rem;
-      color: var(--text);
-      margin-bottom: 0.75rem;
+    .method-item p {
+      font-size: 17px;
+      margin: 0;
     }
 
-    .muted-small {
-      font-size: 0.92rem;
-      color: var(--muted);
+    .note {
+      background: var(--soft);
+      border-left: 4px solid var(--accent);
+      padding: 24px;
+      margin-top: 30px;
     }
 
-    .pricing {
-      font-size: 2rem;
-      color: var(--text);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.25rem;
-    }
-
-    .faq details {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1rem 1.15rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .faq summary {
-      cursor: pointer;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .faq p {
-      margin: 0.75rem 0 0;
+    .note p {
+      font-size: 18px;
+      margin: 0;
+      color: #3f3f3f;
     }
 
     .contact-box {
       background: var(--accent);
-      color: #fff;
-      border-radius: calc(var(--radius) + 6px);
-      padding: 2rem;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 1.5rem;
-      align-items: center;
+      color: white;
+      padding: 36px;
     }
 
     .contact-box h2,
     .contact-box p {
-      color: #fff;
+      color: white;
     }
 
     .contact-box p {
       opacity: 0.9;
     }
 
-    .contact-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .contact-actions a {
-      background: #fff;
+    .contact-box .button {
+      background: white;
       color: var(--accent);
-      padding: 0.9rem 1rem;
-      border-radius: 999px;
-      text-align: center;
-      font-weight: 700;
-    }
-
-    .contact-actions a:hover {
-      text-decoration: none;
-      background: #f0f4f1;
+      border-color: white;
+      margin-top: 16px;
     }
 
     footer {
-      padding: 2rem 1.25rem;
-      border-top: 1px solid var(--border);
-      text-align: center;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 20px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
       color: var(--muted);
-      font-size: 0.9rem;
     }
 
-    @media (max-width: 850px) {
-      .hero-grid,
-      .contact-box {
-        grid-template-columns: 1fr;
-      }
-
-      .grid-3,
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding-top: 3.5rem;
-      }
-    }
-
-    @media (max-width: 650px) {
+    @media (max-width: 720px) {
       .nav {
         align-items: flex-start;
         flex-direction: column;
       }
 
-      nav ul {
+      nav {
         justify-content: flex-start;
-        gap: 0.7rem;
       }
 
-      .nav-cta {
-        display: inline-block;
+      section {
+        padding: 52px 0;
       }
 
-      .section {
-        padding: 3rem 0;
+      .hero {
+        padding: 70px 0 62px;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      p {
+        font-size: 18px;
+      }
+
+      .lead {
+        font-size: 20px;
       }
     }
   </style>
@@ -460,389 +348,199 @@
 <body>
   <header>
     <div class="nav">
-      <a class="brand" href="#">George Clifton Tutoring</a>
+      <a class="brand" href="#">George Clifton</a>
 
       <nav aria-label="Main navigation">
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#subjects">Subjects</a></li>
-          <li><a href="#admissions">Admissions</a></li>
-          <li><a href="#lessons">Lessons</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a class="nav-cta" href="#contact">Contact</a></li>
-        </ul>
+        <a href="#mat">MAT Prep</a>
+        <a href="#method">Method</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">Oxford Mathematics Student · Online Tutoring</div>
+      <div class="label">Oxford MAT Preparation</div>
 
-          <h1>Clear, focused maths tutoring for ambitious students.</h1>
+      <h1>Online MAT tutoring with an Oxford Maths student.</h1>
 
-          <p class="hero-text">
-            I’m George Clifton, an Oxford University Mathematics student offering online tutoring for GCSE,
-            A-Level, Further Maths, MAT, TMUA, STEP and Oxbridge interview preparation.
-          </p>
+      <p class="lead">
+        I help students preparing for the Oxford Mathematics Admissions Test develop the problem-solving skill,
+        precision and confidence needed for the MAT.
+      </p>
 
-          <div class="hero-actions">
-            <a class="button button-primary" href="mailto:george@georgeclifton.com?subject=Tutoring%20Enquiry">
-              Enquire about tutoring
-            </a>
-            <a class="button button-secondary" href="#subjects">
-              See what I teach
-            </a>
-          </div>
+      <div class="hero-actions">
+        <a class="button button-primary" href="mailto:george@georgeclifton.com?subject=MAT%20Tutoring%20Enquiry">
+          Enquire about MAT tutoring
+        </a>
+        <a class="button button-secondary" href="#method">
+          How lessons work
+        </a>
+      </div>
 
-          <div class="trust-row" aria-label="Key credentials">
-            <span class="trust-pill">Oxford Maths</span>
-            <span class="trust-pill">GCSE & A-Level</span>
-            <span class="trust-pill">Further Maths</span>
-            <span class="trust-pill">MAT / TMUA / STEP</span>
-            <span class="trust-pill">Online lessons</span>
-          </div>
-        </div>
-
-        <aside class="hero-card" aria-label="Tutoring summary">
-          <h2>What I help with</h2>
-          <ul>
-            <li>Building genuine understanding, not just memorising methods</li>
-            <li>Improving exam technique through targeted question practice</li>
-            <li>Identifying weak topics and fixing them systematically</li>
-            <li>Preparing for demanding entrance exams and interviews</li>
-          </ul>
-        </aside>
+      <div class="small-row">
+        <span class="pill">Oxford Mathematics</span>
+        <span class="pill">MAT preparation</span>
+        <span class="pill">Problem solving</span>
+        <span class="pill">Online one-to-one lessons</span>
       </div>
     </section>
 
-    <section class="section" id="about">
-      <div class="container">
-        <div class="section-intro">
-          <h2>About me</h2>
-          <p>
-            I study Mathematics at the University of Oxford and tutor students who want to become more confident,
-            precise and effective at maths. My approach is simple: first make the idea feel intuitive, then practise
-            enough exam-style questions that the method becomes automatic.
-          </p>
-          <p>
-            I work especially well with students who are aiming for top GCSE and A-Level grades, or who want support
-            with more advanced problem-solving for university admissions tests.
-          </p>
-        </div>
+    <section id="mat">
+      <div class="label">Why MAT prep is different</div>
 
-        <div class="grid grid-3">
-          <div class="card">
-            <h3>Strong academic background</h3>
-            <p>
-              Oxford Mathematics student with A*A*A* in Maths, Further Maths and Physics.
-            </p>
-          </div>
+      <h2>The MAT is not just another maths exam.</h2>
 
-          <div class="card">
-            <h3>Exam-focused teaching</h3>
-            <p>
-              Lessons are built around the student’s exam board, weak areas and target grade.
-            </p>
-          </div>
+      <p>
+        The MAT tests whether you can think clearly with unfamiliar problems, not just whether you know the syllabus.
+        Many students know the A-Level content, but struggle when the question is phrased in a new or subtle way.
+      </p>
 
-          <div class="card">
-            <h3>Clear explanations</h3>
-            <p>
-              I focus on making difficult ideas feel manageable before moving into harder exam questions.
-            </p>
-          </div>
-        </div>
-      </div>
+      <p>
+        My tutoring focuses on bridging that gap: turning school maths knowledge into flexible problem-solving ability.
+      </p>
+
+      <ul class="list">
+        <li>Learning how to start difficult problems when the method is not obvious.</li>
+        <li>Building fluency with algebra, functions, sequences, geometry and proof.</li>
+        <li>Practising multiple-choice questions without relying on guessing.</li>
+        <li>Writing clear solutions to longer questions under time pressure.</li>
+        <li>Reviewing mistakes carefully so weak patterns are fixed, not repeated.</li>
+      </ul>
     </section>
 
-    <section class="section" id="subjects">
-      <div class="container">
-        <div class="section-intro">
-          <h2>Subjects offered</h2>
-          <p>
-            I offer one-to-one online tutoring across school maths and university admissions preparation.
-          </p>
-        </div>
+    <section id="method">
+      <div class="label">Teaching method</div>
 
-        <div class="grid grid-3">
-          <article class="card">
-            <h3>GCSE Maths</h3>
+      <h2>A focused approach to MAT preparation.</h2>
+
+      <p>
+        Lessons are structured around carefully chosen problems. The aim is not to rush through as many questions as
+        possible, but to understand exactly how to think when the route is unclear.
+      </p>
+
+      <div class="method">
+        <div class="method-item">
+          <div>
+            <h3>Diagnose weak points</h3>
             <p>
-              For students who want to strengthen foundations, improve confidence and prepare thoroughly for exams.
-            </p>
-            <ul class="subject-list">
-              <li>Algebra and graphs</li>
-              <li>Geometry and trigonometry</li>
-              <li>Probability and statistics</li>
-              <li>Exam technique and past papers</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>A-Level Maths</h3>
-            <p>
-              Support for students studying pure maths, statistics and mechanics across major UK exam boards.
-            </p>
-            <ul class="subject-list">
-              <li>Calculus</li>
-              <li>Functions and coordinate geometry</li>
-              <li>Trigonometry</li>
-              <li>Statistics and mechanics</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>Further Maths</h3>
-            <p>
-              For students who want help with the more abstract and demanding parts of the Further Maths course.
-            </p>
-            <ul class="subject-list">
-              <li>Complex numbers</li>
-              <li>Matrices and linear algebra</li>
-              <li>Differential equations</li>
-              <li>Further pure topics</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="admissions">
-      <div class="container">
-        <div class="section-intro">
-          <h2>University admissions preparation</h2>
-          <p>
-            For students applying to competitive maths-related courses, I also offer support with entrance-test
-            problem solving and interview preparation.
-          </p>
-        </div>
-
-        <div class="grid grid-3">
-          <article class="card card-highlight">
-            <h3>MAT</h3>
-            <p>
-              Oxford-style problem-solving, proof-based reasoning, multiple-choice strategy and long-form question practice.
-            </p>
-          </article>
-
-          <article class="card card-highlight">
-            <h3>TMUA</h3>
-            <p>
-              Speed, accuracy, logical reasoning and targeted practice for the style of questions used in the TMUA.
-            </p>
-          </article>
-
-          <article class="card card-highlight">
-            <h3>STEP & Interviews</h3>
-            <p>
-              Harder problem-solving, explaining ideas clearly, and learning how to think aloud under pressure.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="lessons">
-      <div class="container">
-        <div class="section-intro">
-          <h2>How lessons work</h2>
-          <p>
-            Lessons are online, one-to-one and tailored to the student. The aim is not just to get through questions,
-            but to understand exactly where mistakes are coming from and fix them.
-          </p>
-        </div>
-
-        <div class="grid grid-3 steps">
-          <div class="card step">
-            <h3>Diagnose</h3>
-            <p>
-              We start by identifying the student’s current level, target grade and weakest topics.
+              We identify which areas are causing difficulty: algebraic manipulation, problem interpretation,
+              proof, timing, or confidence with unfamiliar questions.
             </p>
           </div>
+        </div>
 
-          <div class="card step">
-            <h3>Explain</h3>
+        <div class="method-item">
+          <div>
+            <h3>Build problem-solving tools</h3>
             <p>
-              I explain the key ideas clearly, using examples that build from simple to exam-level.
+              I teach general techniques: trying examples, spotting structure, simplifying the problem,
+              working backwards, and choosing useful notation.
             </p>
           </div>
+        </div>
 
-          <div class="card step">
-            <h3>Practise</h3>
+        <div class="method-item">
+          <div>
+            <h3>Practise under exam conditions</h3>
             <p>
-              We work through targeted questions, focusing on method, presentation and exam technique.
+              As the test approaches, we move towards timed practice, past MAT questions and detailed review
+              of solution strategy.
             </p>
           </div>
         </div>
       </div>
-    </section>
 
-    <section class="section" id="resources">
-      <div class="container">
-        <div class="section-intro">
-          <h2>Practice resources</h2>
-          <p>
-            I use worksheets and exam-style questions to support lessons. You can keep these links, replace them with
-            your own PDFs, or remove this section until your worksheets are ready.
-          </p>
-        </div>
-
-        <div class="grid grid-2">
-          <div class="card">
-            <h3>GCSE worksheets</h3>
-            <ul class="subject-list">
-              <li><a href="worksheets/GCSE-Algebra-Basics.pdf" download>GCSE Algebra Basics Worksheet</a></li>
-              <li><a href="worksheets/GCSE-Geometry-Practice.pdf" download>GCSE Geometry Practice Worksheet</a></li>
-              <li><a href="worksheets/GCSE-Exam-Questions.pdf" download>GCSE Exam-Style Questions Worksheet</a></li>
-            </ul>
-          </div>
-
-          <div class="card">
-            <h3>A-Level worksheets</h3>
-            <ul class="subject-list">
-              <li><a href="worksheets/ALevel-Algebra-Calculus.pdf" download>A-Level Algebra & Calculus Worksheet</a></li>
-              <li><a href="worksheets/ALevel-Trigonometry-Geometry.pdf" download>A-Level Trigonometry & Geometry Worksheet</a></li>
-              <li><a href="worksheets/ALevel-Exam-Questions.pdf" download>A-Level Exam-Style Questions Worksheet</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="pricing">
-      <div class="container">
-        <div class="section-intro">
-          <h2>Pricing</h2>
-          <p>
-            You can either add your exact price here or keep it as enquiry-based while you are still deciding rates.
-          </p>
-        </div>
-
-        <div class="grid grid-3">
-          <div class="card">
-            <h3>GCSE Maths</h3>
-            <div class="pricing">£40/hr</div>
-            <p class="muted-small">Suggested starting price. Adjust before publishing if needed.</p>
-          </div>
-
-          <div class="card card-highlight">
-            <h3>A-Level / Further Maths</h3>
-            <div class="pricing">£50/hr</div>
-            <p class="muted-small">For A-Level Maths, Further Maths and advanced school topics.</p>
-          </div>
-
-          <div class="card">
-            <h3>Admissions Prep</h3>
-            <div class="pricing">£60/hr</div>
-            <p class="muted-small">For MAT, TMUA, STEP and Oxbridge interview preparation.</p>
-          </div>
-        </div>
-
-        <p style="margin-top: 1rem;">
-          Not sure which option fits? Email me and I’ll suggest the most suitable approach.
+      <div class="note">
+        <p>
+          The goal is for students to become calmer and more systematic when faced with a hard question.
+          That is often what separates a good A-Level mathematician from a strong MAT candidate.
         </p>
       </div>
     </section>
 
-    <section class="section" id="testimonials">
-      <div class="container">
-        <div class="section-intro">
-          <h2>Testimonials</h2>
+    <section>
+      <div class="label">What lessons cover</div>
+
+      <h2>Content and skills.</h2>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>Core MAT topics</h3>
           <p>
-            Replace these with real testimonials once you have them. Until then, either remove this section or use
-            “References available on request.”
+            Algebra, functions, graphs, sequences, coordinate geometry, trigonometry, differentiation,
+            integration, proof and logical reasoning.
           </p>
         </div>
 
-        <div class="grid grid-2">
-          <div class="card">
-            <p class="quote">
-              “George explains difficult ideas clearly and helped me feel much more confident with exam questions.”
-            </p>
-            <p class="muted-small">Student testimonial placeholder</p>
-          </div>
+        <div class="card">
+          <h3>Exam technique</h3>
+          <p>
+            Multiple-choice strategy, time management, avoiding common traps, presenting long solutions,
+            and reviewing past-paper attempts effectively.
+          </p>
+        </div>
 
-          <div class="card">
-            <p class="quote">
-              “The lessons were focused, structured and made a real difference to my understanding.”
-            </p>
-            <p class="muted-small">Parent testimonial placeholder</p>
-          </div>
+        <div class="card">
+          <h3>Problem-solving habits</h3>
+          <p>
+            Learning when to test small cases, draw a diagram, introduce notation, rearrange the question,
+            or search for hidden structure.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Oxbridge preparation</h3>
+          <p>
+            For suitable students, lessons can also include interview-style mathematical discussion and
+            preparation for explaining ideas aloud.
+          </p>
         </div>
       </div>
     </section>
 
-    <section class="section faq" id="faq">
-      <div class="container">
-        <div class="section-intro">
-          <h2>Frequently asked questions</h2>
-        </div>
+    <section id="about">
+      <div class="label">About George</div>
 
-        <details>
-          <summary>Are lessons online or in person?</summary>
-          <p>
-            Lessons are online, usually using video call and a shared whiteboard. This makes scheduling easier and
-            allows students to learn from home.
-          </p>
-        </details>
+      <h2>Oxford Mathematics student.</h2>
 
-        <details>
-          <summary>Which exam boards do you cover?</summary>
-          <p>
-            I can support students studying AQA, Edexcel, OCR and other major UK exam boards. Lessons are adapted to
-            the student’s syllabus.
-          </p>
-        </details>
+      <p>
+        I’m George Clifton, a Mathematics student at the University of Oxford. I offer online tutoring for students
+        preparing for the MAT and for applicants to mathematically demanding university courses.
+      </p>
 
-        <details>
-          <summary>Do you offer a trial lesson?</summary>
-          <p>
-            I am happy to discuss the student’s goals first by email and arrange an initial session to see whether the
-            tutoring is a good fit.
-          </p>
-        </details>
+      <p>
+        My teaching style is direct and problem-focused. I try to make hard questions feel less mysterious by breaking
+        down the thought process behind them, then helping students practise that process themselves.
+      </p>
 
-        <details>
-          <summary>Can you help with Oxbridge maths preparation?</summary>
-          <p>
-            Yes. I can help with MAT-style problem solving, TMUA preparation, STEP questions and interview-style
-            mathematical discussion.
-          </p>
-        </details>
+      <div class="small-row">
+        <span class="pill">Oxford Maths</span>
+        <span class="pill">A-Level Maths</span>
+        <span class="pill">Further Maths</span>
+        <span class="pill">MAT / admissions prep</span>
       </div>
     </section>
 
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="contact-box">
-          <div>
-            <h2>Interested in tutoring?</h2>
-            <p>
-              Send me a short message with the student’s year group, subject, exam board if known, and what they would
-              like help with.
-            </p>
-          </div>
+    <section id="contact">
+      <div class="contact-box">
+        <h2>Interested in MAT tutoring?</h2>
 
-          <div class="contact-actions">
-            <a href="mailto:george@georgeclifton.com?subject=Tutoring%20Enquiry">
-              Email george@georgeclifton.com
-            </a>
+        <p>
+          Send me a short message with the student’s year group, current maths background, target course,
+          and where they are in their MAT preparation.
+        </p>
 
-            <!-- Replace this with your Calendly/TidyCal link if you create one -->
-            <a href="mailto:george@georgeclifton.com?subject=Free%20consultation%20request">
-              Request a free consultation
-            </a>
-          </div>
-        </div>
+        <a class="button" href="mailto:george@georgeclifton.com?subject=MAT%20Tutoring%20Enquiry">
+          Email george@georgeclifton.com
+        </a>
       </div>
     </section>
   </main>
 
   <footer>
-    &copy; 2026 George Clifton. All rights reserved.
+    &copy; 2026 George Clifton. Online MAT preparation and maths tutoring.
   </footer>
 </body>
 </html>
